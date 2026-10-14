@@ -26,7 +26,7 @@ FAMILIES: list[tuple[str, str | None]] = [
     ("registered_workplaces", "locations"),
     ("official_website", "website"),
     ("social_profiles", "website"),
-    ("hiring", None),
+    ("hiring", "jobs"),
     ("dated_activity", None),
 ]
 
@@ -54,6 +54,7 @@ def _facts(family: str, profile: dict[str, Any]) -> int:
         "registered_workplaces": lambda v: len(v.get("locations") or []),
         "official_website": lambda v: int(bool((v.get("identity_assessment") or {}).get("publishable"))),
         "social_profiles": lambda v: len(v.get("social_links") or []) if (v.get("identity_assessment") or {}).get("publishable") else 0,
+        "hiring": lambda v: len(v.get("active_ads") or []),
     }
     return counters[family](value)
 
@@ -83,11 +84,17 @@ def build_report(profiles: list[dict[str, Any]]) -> dict[str, Any]:
             "families": {family: _facts(family, profile) for family, _ in FAMILIES},
             "states": {module: status for module, status in ((m, _value(profile, m)[0]) for m in sorted({m for _, m in FAMILIES if m}))},
         })
+    proof_types = Counter(
+        ((profile.get("evidence", {}).get("website") or {}).get("value") or {}).get("identity_assessment", {}).get("method", "none")
+        for profile in profiles
+        if _facts("official_website", profile)
+    )
     website_registered = sum(1 for profile in profiles if str(profile.get("website") or "").strip())
     return {
         "companies": n,
         "registry_website_listed": website_registered,
         "total_requests": sum(item["requests"] or 0 for item in per_company),
+        "website_publication_methods": dict(proof_types),
         "families": families,
         "per_company": per_company,
     }

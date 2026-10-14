@@ -92,16 +92,28 @@ def _registered_domain(url: str) -> str:
     return ext.top_domain_under_public_suffix
 
 
+_ROBOTS_CACHE: dict[str, urllib.robotparser.RobotFileParser | None] = {}
+_ROBOTS_LOCK = __import__("threading").Lock()
+
+
 def _robots_allowed(url: str, timeout: float) -> bool:
     assert_public_url(url)
     parsed = urllib.parse.urlparse(url)
     robots_url = urllib.parse.urlunparse((parsed.scheme, parsed.netloc, "/robots.txt", "", "", ""))
+    with _ROBOTS_LOCK:
+        cached = _ROBOTS_CACHE.get(robots_url, False)
+    if cached is None:
+        return True
+    if cached is not False:
+        return cached.can_fetch(USER_AGENT, url)
     parser = urllib.robotparser.RobotFileParser()
     parser.set_url(robots_url)
     try:
         request = urllib.request.Request(robots_url, headers={"User-Agent": USER_AGENT})
         with _gated_open(request, timeout) as response:
             parser.parse(response.read().decode("utf-8", errors="replace").splitlines())
+        with _ROBOTS_LOCK:
+            _ROBOTS_CACHE[robots_url] = parser
         return parser.can_fetch(USER_AGENT, url)
     except BudgetExhausted:
         raise
@@ -109,6 +121,8 @@ def _robots_allowed(url: str, timeout: float) -> bool:
         # An unavailable robots file is not permission to ignore explicit site terms; callers retain
         # the URL and can route uncertain domains to review. For this bounded homepage POC, allow one
         # ordinary GET when robots.txt is absent rather than crawl deeper.
+        with _ROBOTS_LOCK:
+            _ROBOTS_CACHE[robots_url] = None
         return True
 
 
@@ -275,15 +289,15 @@ def _extraction_state(text: str, soup: BeautifulSoup) -> str:
     return "js_fallback_candidate" if len(text.strip()) < 100 and len(soup.select("script[src]")) >= 2 else "static_complete"
 
 
-def fetch_website(url: str | None, *, timeout: float = REQUEST_TIMEOUT_S, max_bytes: int = 2_000_000) -> tuple[dict[str, Any], dict[str, Any]]:
+def fetch_website(url: str | None, *, timeout: float = REQUEST_TIMEOUT_S, max_bytes: int = 2_000_000, max_secondary_pages: int = 4) -> tuple[dict[str, Any], dict[str, Any]]:
     try:
-        return _fetch_website(url, timeout=timeout, max_bytes=max_bytes)
+        return _fetch_website(url, timeout=timeout, max_bytes=max_bytes, max_secondary_pages=max_secondary_pages)
     except BudgetExhausted as exc:
         normalized = normalize_homepage(url) or "https://data.brreg.no/enhetsregisteret/api/enheter"
         return evidence("website", "blocked", "registry_linked_company_website", normalized, note=str(exc)), {"requests": 0, "bytes": 0, "latencies_ms": []}
 
 
-def _fetch_website(url: str | None, *, timeout: float, max_bytes: int) -> tuple[dict[str, Any], dict[str, Any]]:
+def _fetch_website(url: str | None, *, timeout: float, max_bytes: int, max_secondary_pages: int = 4) -> tuple[dict[str, Any], dict[str, Any]]:
     supplied_url = str(url or "").strip()
     supplied_scheme = bool(re.match(r"^https?://", supplied_url, re.I))
     normalized = normalize_homepage(url)
@@ -334,7 +348,7 @@ def _fetch_website(url: str | None, *, timeout: float, max_bytes: int) -> tuple[
         bytes_received = len(raw)
         page_latencies = [elapsed]
         homepage_domain = value["registered_domain"]
-        for page_url in _priority_links(final_url, soup):
+        for page_url in _priority_links(final_url, soup, limit=max_secondary_pages):
             page, page_social, page_requests, page_bytes, page_elapsed, page_error = _fetch_secondary_page(
                 page_url,
                 homepage_domain=homepage_domain,
@@ -366,7 +380,7 @@ def _fetch_website(url: str | None, *, timeout: float, max_bytes: int) -> tuple[
     except urllib.error.URLError as exc:
         if not supplied_scheme and normalized.startswith("https://"):
             first_elapsed = int((time.monotonic() - started) * 1000)
-            record, metrics = _fetch_website("http://" + supplied_url, timeout=timeout, max_bytes=max_bytes)
+            record, metrics = _fetch_website("http://" + supplied_url, timeout=timeout, max_bytes=max_bytes, max_secondary_pages=max_secondary_pages)
             metrics["requests"] += 2
             metrics["latencies_ms"].insert(0, first_elapsed)
             return record, metrics

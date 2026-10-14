@@ -1,3 +1,60 @@
+# Signalpost entry (built on the Builderr reference agent)
+
+This repository is an entry for Builderr's Signalpost challenge. It starts from the official
+starter kit (imported unchanged in the first commit) and adds safety rails, NAV job ads and
+strictly verified website discovery. The kit's own README follows below this section.
+
+## Install and run
+
+Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
+
+```bash
+make install                      # uv sync --frozen (pinned by uv.lock)
+make run INPUT=<batch file> OUT=<output dir> BULK=<frozen Brreg bulk CSV (.csv.gz)>
+```
+
+`INPUT` is a JSON, JSONL or text list of organisation numbers. Outputs in `OUT`:
+`envelopes.jsonl` (one terminal envelope per input), `profiles.jsonl`, `report.json`
+(runtime, request counts, gate and module states) and `family_coverage.json`.
+`make registry` downloads the current Brreg bulk file to `cache/brreg-enheter.csv.gz` for local runs.
+
+## Environment variables
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `NAV_FEED_TOKEN` | unset | Private NAV job-feed token. Unset: NAV's public token is fetched at run start. |
+| `SIGNALPOST_WEB_REQUEST_CAP` | 1900 | Cap on non-registry outbound requests per run. |
+| `SIGNALPOST_REGISTRY_REQUEST_CAP` | unset | Optional cap on Brønnøysund API requests. |
+| `SIGNALPOST_DEADLINE_SECONDS` | 2280 | Stop fetching this long after start (38 min); envelopes are always written. |
+
+## Declared cache
+
+`data/cache/nav_ads.jsonl.gz` holds the NAV job ads that were active when it was built
+(`make cache`, see `data/cache/nav_feed_state.json` for build time and counts). Each ad keeps its
+own detail URL, real retrieval time and content hash. Contact details and ad descriptions are not
+stored. At run start the feed is read forward from the cache's last page, so ads that have since
+closed are dropped and new ads can still be matched.
+
+## Sources, licences and cost
+
+| Source | Use | Terms |
+|---|---|---|
+| Brønnøysundregistrene (Enhetsregisteret, Regnskapsregisteret) | identity, accounts, roles, subunits, contact index | NLOD 2.0 |
+| NAV job vacancy feed (pam-stilling-feed) | active job ads matched by employer orgnr | NAV API terms of use |
+| Company websites | only after strict identity proof, robots.txt respected | per-site robots/terms |
+
+No LLM and no paid API are used. Expected third-party cost per official run: $0.
+
+## Safety rails
+
+Every outbound request goes through one gate (`src/norway_company_agent/gate.py`): web cap,
+optional registry cap, 1 s spacing per host, 10 s timeout, one retry. Fetching stops at the
+deadline and every input still gets an envelope (`budget_exhausted` where work was cut short).
+Website identity rules are in `IDENTITY_RESOLUTION.md`. `make clean-install-check` clones HEAD
+into a temp folder, installs into a fresh venv and runs tests, the refresh replay and a live smoke.
+
+---
+
 # Signalpost reference agent
 
 This is a runnable starting point for the Signalpost company-research challenge. It is intentionally a solid baseline, not a winning submission.

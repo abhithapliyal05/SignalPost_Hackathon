@@ -19,6 +19,9 @@ from norway_company_agent.batch import profile_complete_for_modules, profiles_fr
 from norway_company_agent.evidence import evidence, utc_now  # noqa: E402
 from norway_company_agent.gate import BUDGET_PREFIX, GATE  # noqa: E402
 from norway_company_agent.identity import apply_website_identity_gate  # noqa: E402
+from norway_company_agent.identity_index import IdentityIndex  # noqa: E402
+from norway_company_agent.jobs import JobsIndex, normalize_name  # noqa: E402
+from norway_company_agent.site_verify import discover_website, publish_discovered_site  # noqa: E402
 from norway_company_agent.official import fetch_official_modules  # noqa: E402
 from norway_company_agent.website import fetch_website  # noqa: E402
 
@@ -40,7 +43,7 @@ def _env_number(name: str, default: float | None) -> float | None:
 def unfinished_profile(profile: dict, fetch_modules: set[str], requested_modules: list[str], note: str, status: str = "blocked") -> dict:
     """Give a company that was not (fully) processed an honest terminal record for every module."""
     records = profile.setdefault("evidence", {})
-    for module in [*sorted(fetch_modules), *(["website"] if "website" in requested_modules else [])]:
+    for module in [*sorted(fetch_modules), *[name for name in ("website", "jobs", "website_discovery") if name in requested_modules]]:
         if module not in records:
             records[module] = evidence(module, status, "run_guard", "about:signalpost-run-guard", note=note)
     profile.setdefault("run_metrics", {"requests": 0, "bytes": 0, "latencies_ms": []})
@@ -64,7 +67,9 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--checkpoint-every", type=int, default=25)
     parser.add_argument("--resume", action="store_true")
-    parser.add_argument("--modules", default="registry,accounting_obligation,registry_live,financials,roles,group,locations,website")
+    parser.add_argument("--modules", default="registry,accounting_obligation,registry_live,financials,roles,group,locations,website,jobs,website_discovery")
+    parser.add_argument("--cache-dir", default=str(ROOT / "data" / "cache"), help="Declared cache directory (NAV ads)")
+    parser.add_argument("--nav-max-pages", type=int, default=60, help="Max NAV feed pages read at run start to bring the cache up to date")
     args = parser.parse_args()
 
     started_at = utc_now()
@@ -81,7 +86,7 @@ def main() -> None:
             if key in annotations[profile["organisation_number"]]:
                 profile[key] = annotations[profile["organisation_number"]][key]
     requested_modules = [item.strip() for item in args.modules.split(",") if item.strip()]
-    fetch_modules = set(requested_modules) - {"registry", "accounting_obligation", "website"}
+    fetch_modules = set(requested_modules) - {"registry", "accounting_obligation", "website", "jobs", "website_discovery"}
     operations = {"requests": 0, "bytes": 0, "latencies_ms": []}
     GATE.configure(
         web_cap=args.web_request_cap,
@@ -90,6 +95,18 @@ def main() -> None:
         host_interval=args.host_interval_seconds,
         started_at=PROCESS_STARTED,
     )
+
+    run_setup: dict = {}
+    identity_index = None
+    if "website_discovery" in requested_modules:
+        setup_started = time.monotonic()
+        identity_index = IdentityIndex.from_bulk(args.bulk)
+        run_setup["identity_index"] = {**identity_index.summary(), "seconds": round(time.monotonic() - setup_started, 1)}
+    jobs_index = None
+    if "jobs" in requested_modules:
+        setup_started = time.monotonic()
+        jobs_index = JobsIndex(args.cache_dir)
+        run_setup["nav_feed"] = {**jobs_index.refresh(max_pages=args.nav_max_pages), "seconds": round(time.monotonic() - setup_started, 1)}
 
     def enrich(profile: dict) -> tuple[dict, dict]:
         GATE.begin_company(profile["organisation_number"])
@@ -109,6 +126,23 @@ def main() -> None:
         if "website" in requested_modules:
             website_record, website_metrics = fetch_website(profile.get("website"))
             profile["evidence"]["website"] = apply_website_identity_gate(profile, website_record)["website"]
+        jobs_record = None
+        if jobs_index is not None:
+            locations = (profile["evidence"].get("locations") or {}).get("value") or {}
+            subunits = {str(item["organisation_number"]): item.get("name") for item in locations.get("locations") or [] if item.get("organisation_number")}
+            names = {normalize_name(name): orgnr for orgnr, name in subunits.items() if normalize_name(name)}
+            names[normalize_name(profile.get("name"))] = profile["organisation_number"]
+            jobs_record = jobs_index.lookup(profile["organisation_number"], names, subunits)
+            profile["evidence"]["jobs"] = jobs_record
+        if identity_index is not None:
+            discovery = discover_website(profile, identity_index, jobs_record)
+            profile["evidence"]["website_discovery"] = discovery
+            if discovery["status"] == "available":
+                site_record, site_metrics = fetch_website(discovery["value"]["verified_url"], max_secondary_pages=2)
+                website_metrics = {key: website_metrics[key] + site_metrics[key] for key in ("requests", "bytes", "latencies_ms")}
+                if site_record["status"] == "available":
+                    discovery["value"]["replaced_website_record"] = {key: (profile["evidence"].get("website") or {}).get(key) for key in ("status", "source_url", "note")}
+                    profile["evidence"]["website"] = publish_discovered_site(profile, site_record, discovery)
         metric = {
             "requests": len(metrics) + website_metrics["requests"],
             "bytes": sum(item.bytes_received for item in metrics) + website_metrics["bytes"],
@@ -185,6 +219,7 @@ def main() -> None:
         "modules": requested_modules,
         "registry": registry_metadata,
         "operations": operations,
+        "run_setup": run_setup,
         "gate": {**GATE.summary(), "hard_stopped": hard_stopped, "elapsed_s": round(time.monotonic() - PROCESS_STARTED, 1)},
         "module_states": {
             module: dict(sorted(Counter(envelope["modules"][module]["state"] for envelope in envelopes).items()))
