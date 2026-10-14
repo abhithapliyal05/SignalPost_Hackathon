@@ -171,7 +171,16 @@ def _contact_link(page: dict[str, Any]) -> str | None:
     return best[1] if best else None
 
 
-def assess_page(page: dict[str, Any], org: str, allowed_orgnrs: set[str], legal_name: str, identifying_phones: set[str], identifying_addresses: list[tuple[str, str]], domain: str) -> dict[str, Any]:
+def domain_matches_name(domain: str, legal_name: str) -> bool:
+    """The registrable domain's label contains the legal name's first distinctive token."""
+    from .identity import _tokens
+
+    core = [token for token in _tokens(legal_name) if len(token) >= 3]
+    label = re.sub(r"[^a-z0-9]", "", domain.rsplit(".", 1)[0].casefold())
+    return bool(core) and core[0] in label
+
+
+def assess_page(page: dict[str, Any], org: str, allowed_orgnrs: set[str], legal_name: str, identifying_phones: set[str], identifying_addresses: list[tuple[str, str]], domain: str, in_group: bool = False) -> dict[str, Any]:
     text = page["text"]
     lowered = text.casefold()
     if any(marker in lowered for marker in PARKED_MARKERS) and len(text) < 3000:
@@ -185,6 +194,10 @@ def assess_page(page: dict[str, Any], org: str, allowed_orgnrs: set[str], legal_
         return {"verdict": "reject", "reason": f"page names other organisation number(s) {', '.join(foreign[:3])}", "own_orgnr_present": bool(own)}
     name = normalize_name(legal_name)
     normalized_text = normalize_name(text)
+    if in_group:
+        return {"verdict": "no_proof", "reason": "group member: only organisation-number proof is accepted"}
+    if not domain_matches_name(domain, legal_name):
+        return {"verdict": "no_proof", "reason": "no organisation number, and domain does not carry the legal name (contact proof not allowed)"}
     if domain.endswith(".no") and name and f" {name} " in f" {normalized_text} ":
         for match in PHONE_PATTERN.finditer(text):
             phone = normalize_phone(match.group(0))
@@ -222,7 +235,8 @@ def verify_candidate(candidate: dict[str, str], profile: dict[str, Any], index: 
         if final_domain != candidate["domain"] and (final_domain in AGGREGATOR_DOMAINS or any(final_domain.endswith("." + item) for item in AGGREGATOR_DOMAINS)):
             result.update(verdict="reject", reason=f"redirects to directory or platform {final_domain}")
             return result
-        assessment = assess_page(current, org, allowed_orgnrs, str(profile.get("name") or ""), phones, addresses, final_domain)
+        in_group = str(raw.get("erIKonsern") or "").casefold() == "true" or (profile.get("evidence", {}).get("group") or {}).get("status") == "available"
+        assessment = assess_page(current, org, allowed_orgnrs, str(profile.get("name") or ""), phones, addresses, final_domain, in_group)
         result["pages"].append({"url": current["final_url"], "retrieved_at": current["retrieved_at"], "content_sha256": current["content_sha256"], **assessment})
         if assessment["verdict"] in {"proof", "reject"}:
             result.update(verdict=assessment["verdict"], final_url=current["final_url"], final_domain=final_domain, reason=assessment.get("reason"))

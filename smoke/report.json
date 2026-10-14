@@ -1,0 +1,118 @@
+{
+  "run_id": "smoke-dev100",
+  "started_at": "2026-10-14T10:48:50.778487Z",
+  "completed_at": "2026-10-14T10:51:25.307266Z",
+  "expected_count": 100,
+  "emitted_envelopes": 100,
+  "resumed_profiles": 0,
+  "profiles_fetched_this_run": 100,
+  "modules": [
+    "registry",
+    "accounting_obligation",
+    "registry_live",
+    "financials",
+    "roles",
+    "group",
+    "locations",
+    "website",
+    "jobs",
+    "website_discovery"
+  ],
+  "registry": {
+    "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
+    "registry_rows_scanned": 1164530,
+    "requested": 100,
+    "selected": 100,
+    "absent_from_snapshot": []
+  },
+  "operations": {
+    "requests": 548,
+    "bytes": 5231458,
+    "p50_ms": 723,
+    "p95_ms": 982
+  },
+  "run_setup": {
+    "identity_index": {
+      "entities": 1177958,
+      "distinct_phones": 407082,
+      "distinct_addresses": 742503,
+      "distinct_email_domains": 92014,
+      "seconds": 40.1
+    },
+    "nav_feed": {
+      "status": "caught_up",
+      "pages": 2,
+      "token_kind": "public",
+      "cache_built_at": "2026-10-14T10:29:42.754608Z",
+      "cached_active_ads": 9715,
+      "now_inactive": 2,
+      "new_active_headers": 29,
+      "last_page_retrieved_at": "2026-10-14T10:49:51.883635Z",
+      "seconds": 2.7
+    }
+  },
+  "gate": {
+    "registry_requests": 500,
+    "web_requests": 71,
+    "total_requests": 571,
+    "web_cap": 1900,
+    "registry_cap": null,
+    "refused": {},
+    "cap_hit": false,
+    "deadline_s": 2280,
+    "deadline_hit": false,
+    "host_interval_s": 1.0,
+    "request_timeout_s": 10.0,
+    "max_attempts": 2,
+    "hard_stopped": false,
+    "elapsed_s": 155.2
+  },
+  "module_states": {
+    "registry": {
+      "complete": 100
+    },
+    "accounting_obligation": {
+      "complete": 100
+    },
+    "registry_live": {
+      "complete": 100
+    },
+    "financials": {
+      "complete": 100
+    },
+    "roles": {
+      "complete": 100
+    },
+    "group": {
+      "complete": 9,
+      "not_found": 91
+    },
+    "locations": {
+      "complete": 100
+    },
+    "website": {
+      "complete": 7,
+      "not_found": 93
+    },
+    "jobs": {
+      "complete": 1,
+      "not_found": 99
+    },
+    "website_discovery": {
+      "complete": 1,
+      "not_applicable": 3,
+      "not_found": 96
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "unique_organisation_numbers": true,
+      "all_entity_states_terminal": true,
+      "all_module_states_terminal": true,
+      "zero_silent_drops": true
+    },
+    "invalid_states": []
+  }
+}

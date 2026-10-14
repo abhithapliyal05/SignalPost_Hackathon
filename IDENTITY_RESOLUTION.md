@@ -30,3 +30,9 @@ A NAV ad is attached only when its employer organisation number equals the compa
 its registered subunits'. New ads seen during the run are fetched only when their business name
 exactly matches the company or a subunit name, and published only when the detail's employer
 organisation number confirms it.
+
+Contact proof is further restricted: it is not accepted for members of a corporate group
+(registry `erIKonsern` or a group-structure record), where a shared group or brand site is
+likely, and the domain label must contain the first distinctive token of the legal name.
+Without both, only orgnr proof can publish a site. (Added after a 1,000-company audit found a
+group site and a kindergarten-chain site passing on contact proof alone.)

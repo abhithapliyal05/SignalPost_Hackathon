@@ -44,6 +44,12 @@ def test_contact_proof_needs_name_unique_contact_and_no_domain() -> None:
     assert address["proof_type"] == "legal_name_and_unique_address"
 
 
+def test_contact_proof_blocked_for_group_members_and_unrelated_domains() -> None:
+    text = "Velkommen til Fjord Rør AS. Ring oss på 22 33 44 55."
+    assert assess_page(page(text), ORG, {ORG}, "FJORD RØR AS", {"22334455"}, [], "fjordror.no", in_group=True)["verdict"] == "no_proof"
+    assert assess_page(page(text), ORG, {ORG}, "FJORD RØR AS", {"22334455"}, [], "rorleggerkjeden.no")["verdict"] == "no_proof"
+
+
 def test_parked_page_rejected() -> None:
     assert assess_page(page(f"This domain is for sale {ORG}"), ORG, {ORG}, "X AS", set(), [], "x.no")["verdict"] == "reject"
 
