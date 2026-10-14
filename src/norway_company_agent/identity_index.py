@@ -57,12 +57,21 @@ def entity_contacts(row: dict[str, Any]) -> dict[str, Any]:
     return {"phones": phones, "addresses": addresses, "email_domain": email_domain(row.get("epostadresse"))}
 
 
+def homepage_domain(value: Any) -> str | None:
+    """Registrable domain of a registry homepage value ("www.firma.no/om" -> "firma.no")."""
+    from .website import _registered_domain, normalize_homepage
+
+    url = normalize_homepage(value)
+    return (_registered_domain(url) or "").casefold() or None if url else None
+
+
 class IdentityIndex:
     def __init__(self) -> None:
         self.phones: Counter[str] = Counter()
         self.addresses: Counter[str] = Counter()
         self.email_domains: Counter[str] = Counter()
         self.names: Counter[str] = Counter()
+        self.homepage_domains: Counter[str] = Counter()
         self.rows = 0
 
     @classmethod
@@ -77,6 +86,9 @@ class IdentityIndex:
                 if contacts["email_domain"]:
                     index.email_domains[contacts["email_domain"]] += 1
                 index.names[normalize_name(row.get("navn"))] += 1
+                domain = homepage_domain(row.get("hjemmeside"))
+                if domain:
+                    index.homepage_domains[domain] += 1
         return index
 
     def summary(self) -> dict[str, int]:
@@ -85,4 +97,5 @@ class IdentityIndex:
             "distinct_phones": len(self.phones),
             "distinct_addresses": len(self.addresses),
             "distinct_email_domains": len(self.email_domains),
+            "distinct_homepage_domains": len(self.homepage_domains),
         }

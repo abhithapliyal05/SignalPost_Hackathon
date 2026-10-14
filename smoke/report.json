@@ -1,7 +1,7 @@
 {
-  "run_id": "smoke-dev100",
-  "started_at": "2026-10-14T10:48:50.778487Z",
-  "completed_at": "2026-10-14T10:51:25.307266Z",
+  "run_id": "dev100v3",
+  "started_at": "2026-10-14T11:10:28.351290Z",
+  "completed_at": "2026-10-14T11:13:18.611684Z",
   "expected_count": 100,
   "emitted_envelopes": 100,
   "resumed_profiles": 0,
@@ -11,12 +11,14 @@
     "accounting_obligation",
     "registry_live",
     "financials",
+    "financial_history",
     "roles",
     "group",
     "locations",
     "website",
     "jobs",
-    "website_discovery"
+    "website_discovery",
+    "official_timeline"
   ],
   "registry": {
     "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
@@ -26,10 +28,10 @@
     "absent_from_snapshot": []
   },
   "operations": {
-    "requests": 548,
-    "bytes": 5231458,
-    "p50_ms": 723,
-    "p95_ms": 982
+    "requests": 648,
+    "bytes": 5238053,
+    "p50_ms": 733,
+    "p95_ms": 945
   },
   "run_setup": {
     "identity_index": {
@@ -37,24 +39,25 @@
       "distinct_phones": 407082,
       "distinct_addresses": 742503,
       "distinct_email_domains": 92014,
-      "seconds": 40.1
+      "distinct_homepage_domains": 84728,
+      "seconds": 44.0
     },
     "nav_feed": {
       "status": "caught_up",
-      "pages": 2,
+      "pages": 3,
       "token_kind": "public",
       "cache_built_at": "2026-10-14T10:29:42.754608Z",
       "cached_active_ads": 9715,
-      "now_inactive": 2,
-      "new_active_headers": 29,
-      "last_page_retrieved_at": "2026-10-14T10:49:51.883635Z",
-      "seconds": 2.7
+      "now_inactive": 3,
+      "new_active_headers": 83,
+      "last_page_retrieved_at": "2026-10-14T11:11:35.245407Z",
+      "seconds": 4.1
     }
   },
   "gate": {
-    "registry_requests": 500,
-    "web_requests": 71,
-    "total_requests": 571,
+    "registry_requests": 600,
+    "web_requests": 72,
+    "total_requests": 672,
     "web_cap": 1900,
     "registry_cap": null,
     "refused": {},
@@ -65,7 +68,7 @@
     "request_timeout_s": 10.0,
     "max_attempts": 2,
     "hard_stopped": false,
-    "elapsed_s": 155.2
+    "elapsed_s": 171.0
   },
   "module_states": {
     "registry": {
@@ -78,6 +81,9 @@
       "complete": 100
     },
     "financials": {
+      "complete": 100
+    },
+    "financial_history": {
       "complete": 100
     },
     "roles": {
@@ -102,6 +108,9 @@
       "complete": 1,
       "not_applicable": 3,
       "not_found": 96
+    },
+    "official_timeline": {
+      "complete": 100
     }
   },
   "validation": {

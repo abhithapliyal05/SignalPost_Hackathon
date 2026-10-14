@@ -23,6 +23,8 @@ from norway_company_agent.identity_index import IdentityIndex  # noqa: E402
 from norway_company_agent.jobs import JobsIndex, normalize_name  # noqa: E402
 from norway_company_agent.site_verify import discover_website, publish_discovered_site  # noqa: E402
 from norway_company_agent.official import fetch_official_modules  # noqa: E402
+from norway_company_agent.registry_site import apply_registry_declared_rule  # noqa: E402
+from norway_company_agent.timeline import build_official_timeline  # noqa: E402
 from norway_company_agent.website import fetch_website  # noqa: E402
 
 
@@ -40,10 +42,14 @@ def _env_number(name: str, default: float | None) -> float | None:
     return float(value) if value else default
 
 
+# Modules not fetched by fetch_official_modules; they are built later in _enrich.
+DERIVED_MODULES = ("website", "jobs", "website_discovery", "official_timeline")
+
+
 def unfinished_profile(profile: dict, fetch_modules: set[str], requested_modules: list[str], note: str, status: str = "blocked") -> dict:
     """Give a company that was not (fully) processed an honest terminal record for every module."""
     records = profile.setdefault("evidence", {})
-    for module in [*sorted(fetch_modules), *[name for name in ("website", "jobs", "website_discovery") if name in requested_modules]]:
+    for module in [*sorted(fetch_modules), *[name for name in DERIVED_MODULES if name in requested_modules]]:
         if module not in records:
             records[module] = evidence(module, status, "run_guard", "about:signalpost-run-guard", note=note)
     profile.setdefault("run_metrics", {"requests": 0, "bytes": 0, "latencies_ms": []})
@@ -67,7 +73,7 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--checkpoint-every", type=int, default=25)
     parser.add_argument("--resume", action="store_true")
-    parser.add_argument("--modules", default="registry,accounting_obligation,registry_live,financials,roles,group,locations,website,jobs,website_discovery")
+    parser.add_argument("--modules", default="registry,accounting_obligation,registry_live,financials,financial_history,roles,group,locations,website,jobs,website_discovery,official_timeline")
     parser.add_argument("--cache-dir", default=str(ROOT / "data" / "cache"), help="Declared cache directory (NAV ads)")
     parser.add_argument("--nav-max-pages", type=int, default=60, help="Max NAV feed pages read at run start to bring the cache up to date")
     args = parser.parse_args()
@@ -86,7 +92,7 @@ def main() -> None:
             if key in annotations[profile["organisation_number"]]:
                 profile[key] = annotations[profile["organisation_number"]][key]
     requested_modules = [item.strip() for item in args.modules.split(",") if item.strip()]
-    fetch_modules = set(requested_modules) - {"registry", "accounting_obligation", "website", "jobs", "website_discovery"}
+    fetch_modules = set(requested_modules) - {"registry", "accounting_obligation", *DERIVED_MODULES}
     operations = {"requests": 0, "bytes": 0, "latencies_ms": []}
     GATE.configure(
         web_cap=args.web_request_cap,
@@ -98,7 +104,7 @@ def main() -> None:
 
     run_setup: dict = {}
     identity_index = None
-    if "website_discovery" in requested_modules:
+    if {"website", "website_discovery"} & set(requested_modules):
         setup_started = time.monotonic()
         identity_index = IdentityIndex.from_bulk(args.bulk)
         run_setup["identity_index"] = {**identity_index.summary(), "seconds": round(time.monotonic() - setup_started, 1)}
@@ -126,6 +132,8 @@ def main() -> None:
         if "website" in requested_modules:
             website_record, website_metrics = fetch_website(profile.get("website"))
             profile["evidence"]["website"] = apply_website_identity_gate(profile, website_record)["website"]
+            if identity_index is not None:
+                apply_registry_declared_rule(profile, profile["evidence"]["website"], identity_index)
         jobs_record = None
         if jobs_index is not None:
             locations = (profile["evidence"].get("locations") or {}).get("value") or {}
@@ -134,7 +142,7 @@ def main() -> None:
             names[normalize_name(profile.get("name"))] = profile["organisation_number"]
             jobs_record = jobs_index.lookup(profile["organisation_number"], names, subunits)
             profile["evidence"]["jobs"] = jobs_record
-        if identity_index is not None:
+        if "website_discovery" in requested_modules and identity_index is not None:
             discovery = discover_website(profile, identity_index, jobs_record)
             profile["evidence"]["website_discovery"] = discovery
             if discovery["status"] == "available":
@@ -143,6 +151,8 @@ def main() -> None:
                 if site_record["status"] == "available":
                     discovery["value"]["replaced_website_record"] = {key: (profile["evidence"].get("website") or {}).get(key) for key in ("status", "source_url", "note")}
                     profile["evidence"]["website"] = publish_discovered_site(profile, site_record, discovery)
+        if "official_timeline" in requested_modules:
+            profile["evidence"]["official_timeline"] = build_official_timeline(profile)
         metric = {
             "requests": len(metrics) + website_metrics["requests"],
             "bytes": sum(item.bytes_received for item in metrics) + website_metrics["bytes"],

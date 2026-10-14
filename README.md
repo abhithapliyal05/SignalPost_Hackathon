@@ -1,8 +1,9 @@
 # Signalpost entry (built on the Builderr reference agent)
 
 This repository is an entry for Builderr's Signalpost challenge. It starts from the official
-starter kit (imported unchanged in the first commit) and adds safety rails, NAV job ads and
-strictly verified website discovery. The kit's own README follows below this section.
+starter kit (imported unchanged in the first commit) and adds safety rails, NAV job ads,
+strictly verified website discovery, registry-declared websites under extra checks, filed-accounts
+history and a dated timeline of official register events. The kit's own README follows below this section.
 
 ## Install and run
 
@@ -26,6 +27,7 @@ make run INPUT=<batch file> OUT=<output dir> BULK=<frozen Brreg bulk CSV (.csv.g
 | `SIGNALPOST_WEB_REQUEST_CAP` | 1900 | Cap on non-registry outbound requests per run. |
 | `SIGNALPOST_REGISTRY_REQUEST_CAP` | unset | Optional cap on Brønnøysund API requests. |
 | `SIGNALPOST_DEADLINE_SECONDS` | 2280 | Stop fetching this long after start (38 min); envelopes are always written. |
+| `SIGNALPOST_HISTORY_INTERVAL_SECONDS` | 0.25 | Minimum spacing between filed-accounts-history calls (HTTP 429 backs off 5 s). |
 
 ## Declared cache
 
@@ -44,6 +46,14 @@ closed are dropped and new ads can still be matched.
 | Company websites | only after strict identity proof, robots.txt respected | per-site robots/terms |
 
 No LLM and no paid API are used. Expected third-party cost per official run: $0.
+
+## Modules added to the kit's defaults
+
+- `financial_history`: every year the company filed annual accounts, with the official PDF link
+  (the kit had it off; measured on 2026-10-14 the endpoint took 100 calls without refusal).
+- `official_timeline`: dated events taken verbatim from the fetched register responses
+  (founded, register entries, articles dated, role-group changes, accounts periods and filing
+  years), each with its source URL, retrieval time and content hash. No extra requests.
 
 ## Safety rails
 

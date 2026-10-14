@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+import re
 import threading
 import time
 from typing import Any, Callable
@@ -23,6 +25,10 @@ BRREG_ACCOUNT_PDF = "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregn
 
 _history_lock = threading.Lock()
 _history_last_request = 0.0
+# The kit assumed ~30 starts/minute for the filing-years endpoint. Measured on 2026-10-14: 100 calls
+# (8 in parallel) all returned 200. A 0.25 s spacing (~240/min) keeps a 1,000-company run to ~4 min;
+# HTTP 429 responses back off in fetch_json.
+HISTORY_INTERVAL_S = float(os.environ.get("SIGNALPOST_HISTORY_INTERVAL_SECONDS", "0.25"))
 
 
 def accounting_obligation_assessment(profile: dict[str, Any]) -> dict[str, Any]:
@@ -105,11 +111,11 @@ def normalize_financial_history(body: Any, org: str) -> dict[str, Any]:
     }
 
 
-def _reserve_history_slot(clock: Callable[[], float] = time.monotonic, sleeper: Callable[[float], None] = time.sleep) -> None:
-    """Reserve starts at least 2.1 seconds apart without serializing response time."""
+def _reserve_history_slot(clock: Callable[[], float] = time.monotonic, sleeper: Callable[[float], None] = time.sleep, interval: float = 2.1) -> None:
+    """Reserve starts at least ``interval`` seconds apart without serializing response time."""
     global _history_last_request
     with _history_lock:
-        delay = 2.1 - (clock() - _history_last_request)
+        delay = interval - (clock() - _history_last_request)
         if delay > 0:
             sleeper(delay)
         _history_last_request = clock()
@@ -117,7 +123,7 @@ def _reserve_history_slot(clock: Callable[[], float] = time.monotonic, sleeper: 
 
 def _fetch_history(url: str) -> FetchResult:
     """Keep this endpoint below its observed 30-request-starts/minute allowance."""
-    _reserve_history_slot()
+    _reserve_history_slot(interval=HISTORY_INTERVAL_S)
     return fetch_json(url)
 
 
@@ -169,6 +175,10 @@ def normalize_entity(body: Any) -> dict[str, Any]:
         "business_address": body.get("forretningsadresse"),
         "postal_address": body.get("postadresse"),
         "latest_submitted_accounts": body.get("sisteInnsendteAarsregnskap"),
+        "registry_dates": {
+            key: item for key, item in sorted(body.items())
+            if "dato" in key.casefold() and isinstance(item, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", item)
+        },
     }
 
 
