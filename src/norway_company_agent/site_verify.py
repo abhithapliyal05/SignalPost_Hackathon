@@ -276,10 +276,11 @@ def discover_website(profile: dict[str, Any], index: IdentityIndex, jobs_record:
     value = {"candidates": results}
     verified = next((item for item in results if item.get("verdict") == "proof"), None)
     if verified:
-        value["verified_url"] = verified["final_url"]
+        parsed = urllib.parse.urlparse(verified["final_url"])
+        value["verified_url"] = urllib.parse.urlunparse((parsed.scheme, parsed.netloc, "/", "", "", ""))
         value["proof"] = verified["proof"]
         value["candidate_source"] = verified["source"]
-        return evidence("website_discovery", "available", "verified_company_website", verified["final_url"], value=value, retrieved_at=verified["proof"]["retrieved_at"], content_sha256=verified["proof"]["content_sha256"], source_row_key=org, note=f"Published on {verified['proof']['type']} proof")
+        return evidence("website_discovery", "available", "verified_company_website", value["verified_url"], value=value, retrieved_at=verified["proof"]["retrieved_at"], content_sha256=verified["proof"]["content_sha256"], source_row_key=org, note=f"Published on {verified['proof']['type']} proof")
     if budget_note:
         return evidence("website_discovery", "blocked", "free_candidate_discovery", source_url, value=value, note=budget_note)
     rejected = [item for item in results if item.get("verdict") == "reject"]
