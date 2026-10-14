@@ -9,6 +9,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
+from .gate import GATE, MAX_ATTEMPTS, REQUEST_TIMEOUT_S
+
 
 @dataclass
 class FetchResult:
@@ -27,9 +29,12 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def fetch_json(url: str, *, timeout: float = 20.0, attempts: int = 3) -> FetchResult:
+def fetch_json(url: str, *, timeout: float = REQUEST_TIMEOUT_S, attempts: int = MAX_ATTEMPTS) -> FetchResult:
     last_error = "request failed"
     for attempt in range(attempts):
+        refusal = GATE.acquire(url)
+        if refusal:
+            return FetchResult(url, 0, 0, 0, error=refusal, retrieved_at=_utc_now())
         started = time.monotonic()
         request = urllib.request.Request(
             url,

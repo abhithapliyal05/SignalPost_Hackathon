@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from .evidence import evidence, utc_now
+from .gate import is_budget_note
 from .official import accounting_obligation_assessment
 from .sampling import iter_bulk
 
@@ -106,6 +107,8 @@ def evidence_terminal_state(record: dict[str, Any] | None) -> str:
     if status == "not_found":
         return "not_found"
     if status == "blocked":
+        if is_budget_note(record.get("note")):
+            return "budget_exhausted"
         note = str(record.get("note") or "").casefold()
         return "blocked_robots" if "robot" in note else "blocked_policy"
     if status == "source_error":

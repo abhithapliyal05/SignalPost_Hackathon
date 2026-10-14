@@ -5,6 +5,7 @@ import time
 from typing import Any, Callable
 
 from .evidence import evidence
+from .gate import is_budget_note
 from .http import FetchResult, fetch_json
 
 ACCOUNTING_OBLIGATION_SOURCE = "https://www.brreg.no/en/submission-of-annual-accounts/reporting-obligations-to-the-register-of-company-accounts/who-has-an-accounting-obligation/"
@@ -173,6 +174,8 @@ def normalize_entity(body: Any) -> dict[str, Any]:
 def _classified(field: str, source_type: str, result: FetchResult, value: Any = None) -> dict[str, Any]:
     if result.status == 200:
         return evidence(field, "available", source_type, result.url, value=result.body if value is None else value, content_sha256=result.content_sha256, retrieved_at=result.retrieved_at, effective_at=result.effective_at)
+    if is_budget_note(result.error):
+        return evidence(field, "blocked", source_type, result.url, note=result.error, retrieved_at=result.retrieved_at)
     if result.status in {404, 410}:
         return evidence(field, "not_found", source_type, result.url, note=result.error, content_sha256=result.content_sha256, retrieved_at=result.retrieved_at, effective_at=result.effective_at)
     return evidence(field, "source_error", source_type, result.url, note=result.error, content_sha256=result.content_sha256, retrieved_at=result.retrieved_at, effective_at=result.effective_at)

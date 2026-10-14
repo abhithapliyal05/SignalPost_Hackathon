@@ -3,15 +3,21 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
+from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeout, as_completed
 from pathlib import Path
+
+PROCESS_STARTED = time.monotonic()
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from norway_company_agent.batch import profile_complete_for_modules, profiles_from_bulk, read_organisation_inputs, terminal_envelope, validate_envelopes  # noqa: E402
-from norway_company_agent.evidence import utc_now  # noqa: E402
+from norway_company_agent.evidence import evidence, utc_now  # noqa: E402
+from norway_company_agent.gate import BUDGET_PREFIX, GATE  # noqa: E402
 from norway_company_agent.identity import apply_website_identity_gate  # noqa: E402
 from norway_company_agent.official import fetch_official_modules  # noqa: E402
 from norway_company_agent.website import fetch_website  # noqa: E402
@@ -26,6 +32,21 @@ def write_jsonl(path: Path, rows: list[dict]) -> None:
     temporary.replace(path)
 
 
+def _env_number(name: str, default: float | None) -> float | None:
+    value = os.environ.get(name, "").strip()
+    return float(value) if value else default
+
+
+def unfinished_profile(profile: dict, fetch_modules: set[str], requested_modules: list[str], note: str, status: str = "blocked") -> dict:
+    """Give a company that was not (fully) processed an honest terminal record for every module."""
+    records = profile.setdefault("evidence", {})
+    for module in [*sorted(fetch_modules), *(["website"] if "website" in requested_modules else [])]:
+        if module not in records:
+            records[module] = evidence(module, status, "run_guard", "about:signalpost-run-guard", note=note)
+    profile.setdefault("run_metrics", {"requests": 0, "bytes": 0, "latencies_ms": []})
+    return profile
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluator-owned Signalpost batch contract")
     parser.add_argument("--organisations", required=True, help="JSON, JSONL, or text organisation-number list")
@@ -34,7 +55,12 @@ def main() -> None:
     parser.add_argument("--profiles-output", required=True)
     parser.add_argument("--report", required=True)
     parser.add_argument("--run-id", required=True)
-    parser.add_argument("--expected-count", type=int, default=100)
+    parser.add_argument("--expected-count", type=int, default=None, help="Defaults to the number of input organisations")
+    parser.add_argument("--deadline-seconds", type=float, default=_env_number("SIGNALPOST_DEADLINE_SECONDS", 38 * 60), help="Stop fetching this long after process start (default 38 min)")
+    parser.add_argument("--hard-stop-grace-seconds", type=float, default=60.0, help="After the deadline, wait this long for in-flight companies before writing envelopes anyway")
+    parser.add_argument("--web-request-cap", type=int, default=GATE.web_cap, help="Non-registry outbound request cap (env SIGNALPOST_WEB_REQUEST_CAP)")
+    parser.add_argument("--registry-request-cap", type=int, default=GATE.registry_cap, help="Optional registry request cap (env SIGNALPOST_REGISTRY_REQUEST_CAP)")
+    parser.add_argument("--host-interval-seconds", type=float, default=1.0, help="Minimum gap between requests to one non-registry host")
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--checkpoint-every", type=int, default=25)
     parser.add_argument("--resume", action="store_true")
@@ -44,6 +70,8 @@ def main() -> None:
     started_at = utc_now()
     organisation_inputs = read_organisation_inputs(args.organisations)
     orgs = [item["organisation_number"] for item in organisation_inputs]
+    if args.expected_count is None:
+        args.expected_count = len(orgs)
     if len(orgs) != args.expected_count:
         raise SystemExit(f"Expected {args.expected_count} organisations, received {len(orgs)}")
     profiles, registry_metadata = profiles_from_bulk(args.bulk, orgs)
@@ -55,8 +83,26 @@ def main() -> None:
     requested_modules = [item.strip() for item in args.modules.split(",") if item.strip()]
     fetch_modules = set(requested_modules) - {"registry", "accounting_obligation", "website"}
     operations = {"requests": 0, "bytes": 0, "latencies_ms": []}
+    GATE.configure(
+        web_cap=args.web_request_cap,
+        registry_cap=args.registry_request_cap,
+        deadline_s=args.deadline_seconds,
+        host_interval=args.host_interval_seconds,
+        started_at=PROCESS_STARTED,
+    )
 
     def enrich(profile: dict) -> tuple[dict, dict]:
+        GATE.begin_company(profile["organisation_number"])
+        try:
+            return _enrich(profile)
+        except Exception as exc:  # one company's crash must never cost the batch its envelopes
+            unfinished_profile(profile, fetch_modules, requested_modules, f"agent error: {type(exc).__name__}: {str(exc)[:160]}", status="source_error")
+            profile["run_metrics"].update(GATE.company_counts(profile["organisation_number"]))
+            return profile, profile["run_metrics"]
+        finally:
+            GATE.begin_company(None)
+
+    def _enrich(profile: dict) -> tuple[dict, dict]:
         records, metrics = fetch_official_modules(profile["organisation_number"], fetch_modules)
         profile["evidence"].update(records)
         website_metrics = {"requests": 0, "bytes": 0, "latencies_ms": []}
@@ -68,6 +114,7 @@ def main() -> None:
             "bytes": sum(item.bytes_received for item in metrics) + website_metrics["bytes"],
             "latencies_ms": [item.elapsed_ms for item in metrics] + website_metrics["latencies_ms"],
         }
+        metric.update(GATE.company_counts(profile["organisation_number"]))
         profile["run_metrics"] = metric
         return profile, metric
 
@@ -85,9 +132,14 @@ def main() -> None:
         }
         resumed_profiles = len(state)
     pending_profiles = [profile for profile in profiles if profile["organisation_number"] not in state]
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = {pool.submit(enrich, profile): profile["organisation_number"] for profile in pending_profiles}
-        for index, future in enumerate(as_completed(futures), 1):
+    hard_stopped = False
+    pool = ThreadPoolExecutor(max_workers=args.workers)
+    futures = {pool.submit(enrich, profile): profile["organisation_number"] for profile in pending_profiles}
+    hard_stop_after = None
+    if args.deadline_seconds is not None:
+        hard_stop_after = max(0.0, args.deadline_seconds + args.hard_stop_grace_seconds - (time.monotonic() - PROCESS_STARTED))
+    try:
+        for index, future in enumerate(as_completed(futures, timeout=hard_stop_after), 1):
             profile, metric = future.result()
             state[profile["organisation_number"]] = profile
             operations["requests"] += metric["requests"]
@@ -96,6 +148,17 @@ def main() -> None:
             if index % args.checkpoint_every == 0 or index == len(pending_profiles):
                 checkpoint = [state[org] for org in orgs if org in state]
                 write_jsonl(profiles_output, checkpoint)
+    except FuturesTimeout:
+        hard_stopped = True
+    pool.shutdown(wait=not hard_stopped, cancel_futures=True)
+    by_org = {profile["organisation_number"]: profile for profile in pending_profiles}
+    for org in orgs:
+        if org not in state:
+            # Still running or never started when the hard stop fired: write an honest record now.
+            # Copy so a still-running worker thread cannot mutate what we serialise.
+            profile = json.loads(json.dumps({key: value for key, value in by_org[org].items() if key != "evidence"}))
+            profile["evidence"] = dict(by_org[org].get("evidence", {}))
+            state[org] = unfinished_profile(profile, fetch_modules, requested_modules, f"{BUDGET_PREFIX}: wall-clock hard stop before this company finished")
 
     completed_at = utc_now()
     ordered_profiles = [state[org] for org in orgs]
@@ -104,6 +167,8 @@ def main() -> None:
         for profile in ordered_profiles
     ]
     validation = validate_envelopes(envelopes, args.expected_count)
+    assert len(envelopes) == len(orgs) and [item["organisation_number"] for item in envelopes] == orgs, "envelope count must equal input count"
+
     write_jsonl(profiles_output, ordered_profiles)
     write_jsonl(Path(args.output), envelopes)
     latencies = sorted(operations.pop("latencies_ms"))
@@ -120,12 +185,22 @@ def main() -> None:
         "modules": requested_modules,
         "registry": registry_metadata,
         "operations": operations,
+        "gate": {**GATE.summary(), "hard_stopped": hard_stopped, "elapsed_s": round(time.monotonic() - PROCESS_STARTED, 1)},
+        "module_states": {
+            module: dict(sorted(Counter(envelope["modules"][module]["state"] for envelope in envelopes).items()))
+            for module in requested_modules
+        },
         "validation": validation,
     }
     Path(args.report).parent.mkdir(parents=True, exist_ok=True)
     Path(args.report).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    raise SystemExit(0 if validation["passed"] else 1)
+    code = 0 if validation["passed"] else 1
+    if hard_stopped:
+        # Worker threads may still be blocked on sockets; outputs are written, so leave now.
+        sys.stdout.flush()
+        os._exit(code)
+    raise SystemExit(code)
 
 
 if __name__ == "__main__":
