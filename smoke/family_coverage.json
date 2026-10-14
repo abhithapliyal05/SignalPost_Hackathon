@@ -1,0 +1,3007 @@
+{
+  "companies": 100,
+  "registry_website_listed": 6,
+  "total_requests": 648,
+  "website_publication_methods": {
+    "deterministic_name_org_evidence_v2": 3,
+    "strict_free_candidate_proof_v1": 1
+  },
+  "families": {
+    "legal_identity": {
+      "module": "registry_live",
+      "companies_covered": 100,
+      "company_coverage": 1.0,
+      "facts": 100,
+      "states": {
+        "available": 100
+      }
+    },
+    "annual_accounts": {
+      "module": "financials",
+      "companies_covered": 100,
+      "company_coverage": 1.0,
+      "facts": 284,
+      "states": {
+        "available": 100
+      }
+    },
+    "accounts_history": {
+      "module": "financial_history",
+      "companies_covered": 100,
+      "company_coverage": 1.0,
+      "facts": 935,
+      "states": {
+        "available": 100
+      }
+    },
+    "leadership_roles": {
+      "module": "roles",
+      "companies_covered": 100,
+      "company_coverage": 1.0,
+      "facts": 361,
+      "states": {
+        "available": 100
+      }
+    },
+    "group_structure": {
+      "module": "group",
+      "companies_covered": 9,
+      "company_coverage": 0.09,
+      "facts": 9,
+      "states": {
+        "available": 9,
+        "not_found": 91
+      }
+    },
+    "registered_workplaces": {
+      "module": "locations",
+      "companies_covered": 75,
+      "company_coverage": 0.75,
+      "facts": 92,
+      "states": {
+        "available": 100
+      }
+    },
+    "official_website": {
+      "module": "website",
+      "companies_covered": 4,
+      "company_coverage": 0.04,
+      "facts": 4,
+      "states": {
+        "available": 7,
+        "not_found": 93
+      }
+    },
+    "social_profiles": {
+      "module": "website",
+      "companies_covered": 2,
+      "company_coverage": 0.02,
+      "facts": 5,
+      "states": {
+        "available": 7,
+        "not_found": 93
+      }
+    },
+    "hiring": {
+      "module": "jobs",
+      "companies_covered": 1,
+      "company_coverage": 0.01,
+      "facts": 1,
+      "states": {
+        "available": 1,
+        "not_found": 99
+      }
+    },
+    "dated_activity": {
+      "module": "official_timeline",
+      "companies_covered": 100,
+      "company_coverage": 1.0,
+      "facts": 2155,
+      "states": {
+        "available": 100
+      }
+    }
+  },
+  "per_company": [
+    {
+      "organisation_number": "993805165",
+      "requests": 12,
+      "registry_requests": 6,
+      "web_requests": 9,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 8,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "available"
+      }
+    },
+    {
+      "organisation_number": "941505686",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "918760857",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 9,
+        "leadership_roles": 3,
+        "group_structure": 1,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 19
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "989216953",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 31
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "998364914",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 14,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 27
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "917144273",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 10,
+        "leadership_roles": 1,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 19
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "934379950",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 2,
+        "accounts_history": 2,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 12
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "976500997",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 29
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "935435102",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 1,
+        "accounts_history": 1,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 10
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "927470519",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 15
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "984867670",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 8,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "928771776",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 15
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "927049708",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 5,
+        "leadership_roles": 1,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 17
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "936165206",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 1,
+        "accounts_history": 1,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 10
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "928635449",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "917350477",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 28
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "941027563",
+      "requests": 14,
+      "registry_requests": 6,
+      "web_requests": 7,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 5,
+        "group_structure": 1,
+        "registered_workplaces": 1,
+        "official_website": 1,
+        "social_profiles": 2,
+        "hiring": 0,
+        "dated_activity": 25
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "available"
+      }
+    },
+    {
+      "organisation_number": "932438054",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 3,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "926597159",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 5,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "932751151",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 3,
+        "leadership_roles": 1,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 13
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "932258242",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 3,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 17
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "924636866",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 6,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 17
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "922337195",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 7,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "889185082",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 7,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "990866309",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 30
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "932941384",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 2,
+        "accounts_history": 2,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "991430091",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 1,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "926782703",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 5,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "988850594",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 27
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "935257778",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 4,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 1,
+        "accounts_history": 1,
+        "leadership_roles": 4,
+        "group_structure": 1,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "983514243",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 3,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 7,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "971589795",
+      "requests": 12,
+      "registry_requests": 6,
+      "web_requests": 6,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 6,
+        "group_structure": 1,
+        "registered_workplaces": 17,
+        "official_website": 1,
+        "social_profiles": 3,
+        "hiring": 1,
+        "dated_activity": 29
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "available",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "available"
+      }
+    },
+    {
+      "organisation_number": "983756441",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 6,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 31
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "930844667",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 3,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "926799169",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 5,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 19
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "924301902",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 6,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "997383907",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 5,
+        "group_structure": 1,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 25
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "931754890",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 3,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "961103940",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "920334709",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 8,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 19
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "911711761",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 13,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 24
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "991192190",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 29
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "927709309",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 5,
+        "leadership_roles": 1,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 15
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "921202237",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 8,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 19
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "914416833",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 12,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "929887255",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 3,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "913429184",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 12,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 27
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "819828512",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 9,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "994013270",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 24
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "848953032",
+      "requests": 16,
+      "registry_requests": 6,
+      "web_requests": 8,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 7,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 26
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "available"
+      }
+    },
+    {
+      "organisation_number": "929311329",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "925019100",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 6,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 22
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "930355313",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 3,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "915114105",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 11,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 24
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "932355973",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 2,
+        "accounts_history": 2,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 17
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "929829662",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 1,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "912851532",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 13,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 25
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "915951201",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 11,
+        "leadership_roles": 8,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 25
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "916690398",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 10,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "994000225",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 25
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "997811003",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 2,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 14,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 27
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "924760656",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 6,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 22
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "928980596",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "886925972",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 3,
+        "group_structure": 1,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 27
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "929495853",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 20
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "990114072",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 30
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "916073836",
+      "requests": 8,
+      "registry_requests": 6,
+      "web_requests": 3,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 10,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 1,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 25
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "available"
+      }
+    },
+    {
+      "organisation_number": "887438382",
+      "requests": 12,
+      "registry_requests": 6,
+      "web_requests": 9,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 9,
+        "leadership_roles": 6,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 17
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "available"
+      }
+    },
+    {
+      "organisation_number": "920513727",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 8,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 19
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "817829422",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 10,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 20
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "925923702",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 6,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 17
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "935856620",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 1,
+        "accounts_history": 1,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 2,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 15
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "950515988",
+      "requests": 16,
+      "registry_requests": 6,
+      "web_requests": 6,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 13,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 1,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 28
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "available"
+      }
+    },
+    {
+      "organisation_number": "815095022",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 4,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 11,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 22
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "812836722",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 13,
+        "leadership_roles": 2,
+        "group_structure": 1,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "924550686",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 6,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 22
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "912681602",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 30
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "929289218",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 16
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "936796273",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 1,
+        "accounts_history": 1,
+        "leadership_roles": 1,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 9
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "992640774",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 1,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 31
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "available",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "998770343",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 3,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 13,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 24
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "996553132",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 29
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "934801989",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 2,
+        "accounts_history": 2,
+        "leadership_roles": 1,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 11
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "995435977",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 25
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "913440404",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 4,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 12,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 22
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "928792064",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 4,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 18
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "816281512",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 11,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 24
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "924156562",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 28
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "811546402",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 13,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "914550033",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 12,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 22
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "997808029",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 14,
+        "leadership_roles": 6,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 28
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "967418153",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 5,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 30
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "934285018",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 1,
+        "accounts_history": 1,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 14
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "989981803",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 30
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "823070632",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 7,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "921105762",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 8,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 20
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "818521162",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 9,
+        "leadership_roles": 3,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 21
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "996108333",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 15,
+        "leadership_roles": 4,
+        "group_structure": 0,
+        "registered_workplaces": 0,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 27
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "918313214",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 9,
+        "leadership_roles": 2,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    },
+    {
+      "organisation_number": "921147252",
+      "requests": 6,
+      "registry_requests": 6,
+      "web_requests": 0,
+      "families": {
+        "legal_identity": 1,
+        "annual_accounts": 3,
+        "accounts_history": 8,
+        "leadership_roles": 6,
+        "group_structure": 0,
+        "registered_workplaces": 1,
+        "official_website": 0,
+        "social_profiles": 0,
+        "hiring": 0,
+        "dated_activity": 23
+      },
+      "states": {
+        "financial_history": "available",
+        "financials": "available",
+        "group": "not_found",
+        "jobs": "not_found",
+        "locations": "available",
+        "official_timeline": "available",
+        "registry_live": "available",
+        "roles": "available",
+        "website": "not_found"
+      }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "run_id": "scale1000",
+  "started_at": "2026-10-14T10:35:31.066065Z",
+  "completed_at": "2026-10-14T10:48:00.215133Z",
+  "expected_count": 1000,
+  "emitted_envelopes": 1000,
+  "resumed_profiles": 0,
+  "profiles_fetched_this_run": 1000,
+  "modules": [
+    "registry",
+    "accounting_obligation",
+    "registry_live",
+    "financials",
+    "roles",
+    "group",
+    "locations",
+    "website",
+    "jobs",
+    "website_discovery"
+  ],
+  "registry": {
+    "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
+    "registry_rows_scanned": 1177959,
+    "requested": 1000,
+    "selected": 994,
+    "absent_from_snapshot": [
+      "922564183",
+      "928987728",
+      "982170931",
+      "931031333",
+      "912695875",
+      "920444040"
+    ]
+  },
+  "operations": {
+    "requests": 5696,
+    "bytes": 75382601,
+    "p50_ms": 721,
+    "p95_ms": 1005
+  },
+  "run_setup": {
+    "identity_index": {
+      "entities": 1177958,
+      "distinct_phones": 407082,
+      "distinct_addresses": 742503,
+      "distinct_email_domains": 92014,
+      "seconds": 39.1
+    },
+    "nav_feed": {
+      "status": "caught_up",
+      "pages": 2,
+      "token_kind": "public",
+      "cache_built_at": "2026-10-14T10:29:42.754608Z",
+      "cached_active_ads": 9715,
+      "now_inactive": 0,
+      "new_active_headers": 15,
+      "last_page_retrieved_at": "2026-10-14T10:36:33.269406Z",
+      "seconds": 2.7
+    }
+  },
+  "gate": {
+    "registry_requests": 5002,
+    "web_requests": 1161,
+    "total_requests": 6163,
+    "web_cap": 1900,
+    "registry_cap": null,
+    "refused": {},
+    "cap_hit": false,
+    "deadline_s": 2280,
+    "deadline_hit": false,
+    "host_interval_s": 1.0,
+    "request_timeout_s": 10.0,
+    "max_attempts": 2,
+    "hard_stopped": false,
+    "elapsed_s": 750.1
+  },
+  "module_states": {
+    "registry": {
+      "complete": 994,
+      "not_found": 6
+    },
+    "accounting_obligation": {
+      "complete": 1000
+    },
+    "registry_live": {
+      "complete": 1000
+    },
+    "financials": {
+      "complete": 997,
+      "not_found": 1,
+      "source_error": 2
+    },
+    "roles": {
+      "complete": 994,
+      "not_found": 6
+    },
+    "group": {
+      "complete": 69,
+      "not_found": 931
+    },
+    "locations": {
+      "complete": 1000
+    },
+    "website": {
+      "blocked_policy": 5,
+      "blocked_robots": 2,
+      "complete": 100,
+      "not_found": 887,
+      "source_error": 6
+    },
+    "jobs": {
+      "complete": 3,
+      "not_found": 997
+    },
+    "website_discovery": {
+      "complete": 16,
+      "not_applicable": 34,
+      "not_found": 950
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "unique_organisation_numbers": true,
+      "all_entity_states_terminal": true,
+      "all_module_states_terminal": true,
+      "zero_silent_drops": true
+    },
+    "invalid_states": []
+  }
+}

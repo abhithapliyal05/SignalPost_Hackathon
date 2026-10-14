@@ -1,0 +1,18 @@
+{
+  "source": "https://pam-stilling-feed.nav.no/api/v1/feed",
+  "terms": "https://navikt.github.io/pam-stilling-feed/ (NAV API terms of use)",
+  "token_kind": "public",
+  "built_at": "2026-10-14T10:29:42.754608Z",
+  "window_days": 183,
+  "feed_pages_read": 372,
+  "ads_seen": 90525,
+  "active_headers": 9716,
+  "active_ads_cached": 9715,
+  "ads_with_employer_orgnr": 9587,
+  "detail_errors": 0,
+  "last_page": {
+    "feed_url": "/api/v1/feed/4eedbf6c-2c34-4842-ada8-b4910e2c0f02",
+    "id": "4eedbf6c-2c34-4842-ada8-b4910e2c0f02",
+    "retrieved_at": "2026-10-14T10:16:27.406777Z"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "run_id": "gated-dev100",
+  "started_at": "2026-10-14T09:33:03.875497Z",
+  "completed_at": "2026-10-14T09:34:18.148996Z",
+  "expected_count": 100,
+  "emitted_envelopes": 100,
+  "resumed_profiles": 0,
+  "profiles_fetched_this_run": 100,
+  "modules": [
+    "registry",
+    "accounting_obligation",
+    "registry_live",
+    "financials",
+    "roles",
+    "group",
+    "locations",
+    "website"
+  ],
+  "registry": {
+    "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
+    "registry_rows_scanned": 1164530,
+    "requested": 100,
+    "selected": 100
+  },
+  "operations": {
+    "requests": 542,
+    "bytes": 3964945,
+    "p50_ms": 722,
+    "p95_ms": 995
+  },
+  "gate": {
+    "registry_requests": 500,
+    "web_requests": 48,
+    "total_requests": 548,
+    "web_cap": 1900,
+    "registry_cap": null,
+    "refused": {},
+    "cap_hit": false,
+    "deadline_s": 2280,
+    "deadline_hit": false,
+    "host_interval_s": 1.0,
+    "request_timeout_s": 10.0,
+    "max_attempts": 2,
+    "hard_stopped": false,
+    "elapsed_s": 74.8
+  },
+  "module_states": {
+    "registry": {
+      "complete": 100
+    },
+    "accounting_obligation": {
+      "complete": 100
+    },
+    "registry_live": {
+      "complete": 100
+    },
+    "financials": {
+      "complete": 100
+    },
+    "roles": {
+      "complete": 100
+    },
+    "group": {
+      "complete": 9,
+      "not_found": 91
+    },
+    "locations": {
+      "complete": 100
+    },
+    "website": {
+      "complete": 6,
+      "not_found": 94
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "unique_organisation_numbers": true,
+      "all_entity_states_terminal": true,
+      "all_module_states_terminal": true,
+      "zero_silent_drops": true
+    },
+    "invalid_states": []
+  }
+}
