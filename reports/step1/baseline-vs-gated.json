@@ -1,0 +1,28 @@
+{
+  "same_companies": true,
+  "companies": 100,
+  "state_differences": [],
+  "value_differences": [
+    {
+      "organisation_number": "887438382",
+      "module": "website"
+    },
+    {
+      "organisation_number": "916073836",
+      "module": "website"
+    },
+    {
+      "organisation_number": "941027563",
+      "module": "website"
+    },
+    {
+      "organisation_number": "950515988",
+      "module": "website"
+    },
+    {
+      "organisation_number": "993805165",
+      "module": "website"
+    }
+  ],
+  "identical": false
+}

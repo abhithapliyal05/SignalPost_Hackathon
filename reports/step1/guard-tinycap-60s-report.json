@@ -1,0 +1,95 @@
+{
+  "run_id": "guard-dev100",
+  "started_at": "2026-10-14T09:34:41.875070Z",
+  "completed_at": "2026-10-14T09:35:41.953163Z",
+  "expected_count": 100,
+  "emitted_envelopes": 100,
+  "resumed_profiles": 0,
+  "profiles_fetched_this_run": 100,
+  "modules": [
+    "registry",
+    "accounting_obligation",
+    "registry_live",
+    "financials",
+    "roles",
+    "group",
+    "locations",
+    "website"
+  ],
+  "registry": {
+    "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
+    "registry_rows_scanned": 1164530,
+    "requested": 100,
+    "selected": 100
+  },
+  "operations": {
+    "requests": 503,
+    "bytes": 1268881,
+    "p50_ms": 720,
+    "p95_ms": 790
+  },
+  "gate": {
+    "registry_requests": 442,
+    "web_requests": 5,
+    "total_requests": 447,
+    "web_cap": 5,
+    "registry_cap": null,
+    "refused": {
+      "web request cap 5 spent": 6,
+      "wall-clock deadline reached": 58
+    },
+    "cap_hit": true,
+    "deadline_s": 60.0,
+    "deadline_hit": true,
+    "host_interval_s": 1.0,
+    "request_timeout_s": 10.0,
+    "max_attempts": 2,
+    "hard_stopped": false,
+    "elapsed_s": 60.7
+  },
+  "module_states": {
+    "registry": {
+      "complete": 100
+    },
+    "accounting_obligation": {
+      "complete": 100
+    },
+    "registry_live": {
+      "budget_exhausted": 6,
+      "complete": 94
+    },
+    "financials": {
+      "budget_exhausted": 12,
+      "complete": 88
+    },
+    "roles": {
+      "budget_exhausted": 13,
+      "complete": 87
+    },
+    "group": {
+      "budget_exhausted": 13,
+      "complete": 9,
+      "not_found": 78
+    },
+    "locations": {
+      "budget_exhausted": 14,
+      "complete": 86
+    },
+    "website": {
+      "budget_exhausted": 5,
+      "complete": 1,
+      "not_found": 94
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "unique_organisation_numbers": true,
+      "all_entity_states_terminal": true,
+      "all_module_states_terminal": true,
+      "zero_silent_drops": true
+    },
+    "invalid_states": []
+  }
+}

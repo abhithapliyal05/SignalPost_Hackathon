@@ -1,0 +1,42 @@
+{
+  "run_id": "baseline-dev100",
+  "started_at": "2026-10-14T09:30:24.988773Z",
+  "completed_at": "2026-10-14T09:31:41.060318Z",
+  "expected_count": 100,
+  "emitted_envelopes": 100,
+  "resumed_profiles": 0,
+  "profiles_fetched_this_run": 100,
+  "modules": [
+    "registry",
+    "accounting_obligation",
+    "registry_live",
+    "financials",
+    "roles",
+    "group",
+    "locations",
+    "website"
+  ],
+  "registry": {
+    "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
+    "registry_rows_scanned": 1164530,
+    "requested": 100,
+    "selected": 100
+  },
+  "operations": {
+    "requests": 542,
+    "bytes": 3964901,
+    "p50_ms": 733,
+    "p95_ms": 969
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "unique_organisation_numbers": true,
+      "all_entity_states_terminal": true,
+      "all_module_states_terminal": true,
+      "zero_silent_drops": true
+    },
+    "invalid_states": []
+  }
+}
