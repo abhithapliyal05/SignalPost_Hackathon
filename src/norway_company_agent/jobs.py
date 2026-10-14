@@ -225,6 +225,8 @@ class JobsIndex:
         unconfirmed = 0
         budget_note = None
         for name in names:
+            if not name:
+                continue
             for item in self.new_headers_by_name.get(name, []):
                 try:
                     row = self._fetch_new(item)

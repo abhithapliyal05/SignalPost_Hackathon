@@ -86,13 +86,31 @@ def profiles_from_bulk(path: str | Path, organisation_numbers: Iterable[str]) ->
         if len(found) == len(wanted):
             break
     missing = [org for org in requested if org not in found]
-    if missing:
-        raise ValueError(f"Organisation numbers absent from registry snapshot: {missing[:10]}")
+    for org in missing:
+        # An input absent from the snapshot (e.g. deleted since the universe was frozen) still gets an
+        # honest profile and envelope instead of failing the whole batch.
+        stub = {key: None for key in ("name", "legal_form", "employees", "municipality", "municipality_number", "industry_code", "industry_label", "website", "latest_submitted_accounts")}
+        stub.update({"organisation_number": org, "bankrupt": False, "liquidating": False})
+        stub["evidence"] = {
+            "registry": evidence(
+                "registry",
+                "not_found",
+                "official_registry_bulk",
+                "https://data.brreg.no/enhetsregisteret/api/enheter/lastned/csv",
+                note="Organisation number absent from the registry snapshot (possibly deleted)",
+                retrieved_at=retrieved_at,
+                content_sha256=snapshot_sha256,
+                source_row_key=org,
+            ),
+        }
+        stub["evidence"]["accounting_obligation"] = accounting_obligation_assessment(stub)
+        found[org] = stub
     return [found[org] for org in requested], {
         "registry_snapshot_sha256": snapshot_sha256,
         "registry_rows_scanned": scanned,
         "requested": len(requested),
-        "selected": len(found),
+        "selected": len(found) - len(missing),
+        "absent_from_snapshot": missing,
     }
 
 
