@@ -1,0 +1,113 @@
+{
+  "companies": 1000,
+  "registry_website_listed": 106,
+  "total_requests": 6648,
+  "website_publication_methods": {
+    "deterministic_name_org_evidence_v2": 35,
+    "registry_declared_unique_domain_v1": 12,
+    "strict_free_candidate_proof_v1": 7
+  },
+  "families": {
+    "legal_identity": {
+      "module": "registry_live",
+      "companies_covered": 1000,
+      "company_coverage": 1.0,
+      "facts": 1000,
+      "states": {
+        "available": 1000
+      }
+    },
+    "annual_accounts": {
+      "module": "financials",
+      "companies_covered": 997,
+      "company_coverage": 0.997,
+      "facts": 2785,
+      "states": {
+        "available": 997,
+        "not_found": 1,
+        "source_error": 2
+      }
+    },
+    "accounts_history": {
+      "module": "financial_history",
+      "companies_covered": 1000,
+      "company_coverage": 1.0,
+      "facts": 8937,
+      "states": {
+        "available": 1000
+      }
+    },
+    "leadership_roles": {
+      "module": "roles",
+      "companies_covered": 994,
+      "company_coverage": 0.994,
+      "facts": 3932,
+      "states": {
+        "available": 994,
+        "not_found": 6
+      }
+    },
+    "group_structure": {
+      "module": "group",
+      "companies_covered": 69,
+      "company_coverage": 0.069,
+      "facts": 69,
+      "states": {
+        "available": 69,
+        "not_found": 931
+      }
+    },
+    "registered_workplaces": {
+      "module": "locations",
+      "companies_covered": 743,
+      "company_coverage": 0.743,
+      "facts": 871,
+      "states": {
+        "available": 1000
+      }
+    },
+    "official_website": {
+      "module": "website",
+      "companies_covered": 54,
+      "company_coverage": 0.054,
+      "facts": 54,
+      "states": {
+        "available": 99,
+        "blocked": 7,
+        "not_found": 889,
+        "source_error": 5
+      }
+    },
+    "social_profiles": {
+      "module": "website",
+      "companies_covered": 24,
+      "company_coverage": 0.024,
+      "facts": 42,
+      "states": {
+        "available": 99,
+        "blocked": 7,
+        "not_found": 889,
+        "source_error": 5
+      }
+    },
+    "hiring": {
+      "module": "jobs",
+      "companies_covered": 3,
+      "company_coverage": 0.003,
+      "facts": 12,
+      "states": {
+        "available": 3,
+        "not_found": 997
+      }
+    },
+    "dated_activity": {
+      "module": "official_timeline",
+      "companies_covered": 1000,
+      "company_coverage": 1.0,
+      "facts": 21152,
+      "states": {
+        "available": 1000
+      }
+    }
+  }
+}
