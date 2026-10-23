@@ -1,10 +1,10 @@
-"""Dated company activity built only from official records already fetched in the run.
+"""Dated company activity built only from official Brønnøysund records.
 
-Every event is a date taken verbatim from a fetched Brønnøysund response (live entity, roles,
-accounts, filed-accounts years), with that response's URL, retrieval time and content hash, and
-the source field that carried the date. No extra requests are made and nothing is inferred: an
-event says what the register recorded on that date, not why.
-"""
+Every event is a date taken verbatim from a fetched register response (live entity, roles,
+accounts, filed-accounts years and the register's update feed), with that response's URL,
+retrieval time and content hash, and the source field that carried the date. Only the update
+feed (``registry_changes``) is fetched for the timeline; nothing is inferred: an event says what
+the register recorded on that date, not why."""
 
 from __future__ import annotations
 
@@ -68,6 +68,16 @@ def build_official_timeline(profile: dict[str, Any]) -> dict[str, Any]:
     if history.get("status") == "available":
         for year in (history.get("value") or {}).get("years") or []:
             events.append({"date": str(year), "precision": "year", "event": f"Annual accounts for {year} filed; official copy available", "source_field": "aarsregnskap/kopi/aar", **_source(history)})
+
+    changes = records.get("registry_changes") or {}
+    if changes.get("status") == "available":
+        value = changes.get("value") or {}
+        for item in value.get("events") or []:
+            events.append({"date": item["date"], "precision": "day", "event": item["event"], "source_field": item["source_field"], "update_id": item.get("update_id"), **_source(changes)})
+        series = value.get("employee_series") or []
+        if len(series) >= 2 and series[0]["employees"] != series[-1]["employees"]:
+            first, last = series[0], series[-1]
+            events.append({"date": last["date"], "precision": "day", "event": f"Employee count in the register changed from {first['employees']} ({first['date']}) to {last['employees']}", "source_field": "endringer:/antallAnsatte", **_source(changes)})
 
     events.sort(key=lambda item: (item["date"], item["event"]), reverse=True)
     source_url = live.get("source_url") or f"https://data.brreg.no/enhetsregisteret/api/enheter/{org}"

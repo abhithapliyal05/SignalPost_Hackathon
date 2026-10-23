@@ -9,6 +9,7 @@ from typing import Any, Callable
 from .evidence import evidence
 from .gate import is_budget_note
 from .http import FetchResult, fetch_json
+from .registry_changes import normalize_updates, updates_url
 
 ACCOUNTING_OBLIGATION_SOURCE = "https://www.brreg.no/en/submission-of-annual-accounts/reporting-obligations-to-the-register-of-company-accounts/who-has-an-accounting-obligation/"
 ACCOUNTING_RULESET_VERSION = "brreg_accounting_obligation_rules_2024-08-09_v1"
@@ -202,6 +203,7 @@ def fetch_official_modules(org: str, modules: set[str], fetcher: Callable[[str],
         "roles": (BRREG_ROLES.format(org=org), "official_roles"),
         "group": (BRREG_GROUP.format(org=org), "official_group_structure"),
         "locations": (BRREG_SUBUNITS.format(org=org), "official_subunits"),
+        "registry_changes": (updates_url(org), "official_registry_updates"),
     }
     for module, (url, source_type) in endpoints.items():
         if module not in modules:
@@ -210,6 +212,6 @@ def fetch_official_modules(org: str, modules: set[str], fetcher: Callable[[str],
         metrics.append(result)
         normalized = None
         if result.status == 200:
-            normalized = normalize_entity(result.body) if module == "registry_live" else normalize_financials(result.body) if module == "financials" else normalize_financial_history(result.body, org) if module == "financial_history" else normalize_roles(result.body) if module == "roles" else normalize_locations(result.body) if module == "locations" else result.body
+            normalized = normalize_entity(result.body) if module == "registry_live" else normalize_financials(result.body) if module == "financials" else normalize_financial_history(result.body, org) if module == "financial_history" else normalize_roles(result.body) if module == "roles" else normalize_locations(result.body) if module == "locations" else normalize_updates(result.body) if module == "registry_changes" else result.body
         records[module] = _classified(module, source_type, result, value=normalized)
     return records, metrics
