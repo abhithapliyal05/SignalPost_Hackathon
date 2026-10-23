@@ -23,6 +23,12 @@ LEGAL_FORMS = {
     "ORGL": "organisational unit (organisasjonsledd)", "GFS": "mutual insurance company (gjensidig forsikringsselskap)", "KF": "municipal enterprise (KF)", "SF": "state enterprise (SF)",
 }
 RECENT_DAYS = 548  # about 18 months
+ROUTINE_EVENTS = ("Employee count", "accounts period ended")
+
+
+def _invert(day: str) -> str:
+    """Sort key that orders ISO dates newest first inside an ascending sort."""
+    return "".join(chr(0x10FFFF - ord(char)) for char in day)
 
 
 def _ok(record: dict[str, Any] | None) -> bool:
@@ -107,7 +113,10 @@ def build_summary(profile: dict[str, Any], today: date | None = None) -> dict[st
             if change is not None:
                 direction = "rose" if change > 0 else "fell" if change < 0 else "was unchanged"
                 detail = f" {abs(change):.0f}%" if change else ""
-                say("changes", f"Revenue {direction}{detail} from {_nok(before)} (period ending {(rows[-2].get('period') or {}).get('tilDato')}) to {_nok(after)}.", accounts)
+                before_text, after_text = _nok(before), _nok(after)
+                if before_text == after_text:
+                    before_text, after_text = f"NOK {before:,.0f}".replace(",", " "), f"NOK {after:,.0f}".replace(",", " ")
+                say("changes", f"Revenue {direction}{detail} from {before_text} (period ending {(rows[-2].get('period') or {}).get('tilDato')}) to {after_text}.", accounts)
     else:
         unknowns.append({"field": "annual_accounts", "text": "No normalized annual accounts were returned by the Register of Company Accounts."})
     history = records.get("financial_history")
@@ -137,6 +146,47 @@ def build_summary(profile: dict[str, Any], today: date | None = None) -> dict[st
     if _ok(group):
         say("company", "The register lists it in a corporate group structure.", group)
 
+    lei = records.get("lei")
+    lei_value = (lei or {}).get("value") or {}
+    if _ok(lei) and lei_value.get("lei"):
+        text = f"GLEIF lists its LEI {lei_value['lei']} (registration {str(lei_value.get('registration_status') or 'unknown').lower()})"
+        parents = []
+        for key, label in (("direct_parent", "direct parent"), ("ultimate_parent", "ultimate parent")):
+            parent = lei_value.get(key) or {}
+            if parent.get("name"):
+                parents.append(f"{label} {parent['name']}" + (f" ({parent['country']})" if parent.get("country") else ""))
+        direct, ultimate = (lei_value.get("direct_parent") or {}), (lei_value.get("ultimate_parent") or {})
+        if direct.get("lei") and direct.get("lei") == ultimate.get("lei") and direct.get("name"):
+            parents = [f"parent {direct['name']}" + (f" ({direct['country']})" if direct.get("country") else "") + ", also its ultimate parent"]
+        if parents:
+            text += ", with " + " and ".join(parents)
+        say("company", text + ".", lei)
+
+    licences = records.get("licences")
+    licence_items = ((licences or {}).get("value") or {}).get("items") or []
+    if _ok(licences) and licence_items:
+        listed = []
+        for item in licence_items:
+            label = str(item.get("licence") or "")
+            if item.get("source", "").startswith("udir_") and item.get("name") and item.get("unit_org") != org:
+                label += f" {item['name']}"
+            if item.get("granted"):
+                label += f" since {item['granted']}"
+            if item.get("unit_org") != org:
+                label += f" (workplace {item['unit_org']})"
+            if label and label not in listed:
+                listed.append(label)
+        say("company", f"Public registers list: {'; '.join(listed[:4])}" + (f"; and {len(listed) - 4} more" if len(listed) > 4 else "") + ".", *[{"source_url": item.get("source_url")} for item in licence_items[:4]])
+
+    inspections = records.get("food_inspections")
+    inspection_items = ((inspections or {}).get("value") or {}).get("items") or []
+    if _ok(inspections) and inspection_items:
+        latest = inspection_items[0]
+        text = f"Mattilsynet's latest food-safety inspection of {latest.get('premises')}" + (f" ({latest['town']})" if latest.get("town") else "") + f" on {latest.get('inspected')} gave a {latest.get('result')}"
+        if len(inspection_items) > 1:
+            text += f"; {len(inspection_items)} inspected premises in total"
+        say("changes", text + ".", {"source_url": latest.get("source_url")})
+
     website = records.get("website")
     site_value = (website or {}).get("value") or {}
     if _ok(website) and (site_value.get("identity_assessment") or {}).get("publishable"):
@@ -165,15 +215,28 @@ def build_summary(profile: dict[str, Any], today: date | None = None) -> dict[st
     if _ok(posts) and post_rows:
         say("changes", f"Its website feed lists {len(post_rows)} dated post(s), most recently “{post_rows[0]['title']}” on {post_rows[0]['published_at'][:10]}.", posts)
 
+    changes = records.get("registry_changes")
+    series = ((changes or {}).get("value") or {}).get("employee_series") or []
+    if _ok(changes) and len(series) >= 2 and series[0]["employees"] != series[-1]["employees"]:
+        first, last = series[0], series[-1]
+        direction = "grew" if last["employees"] > first["employees"] else "fell"
+        say("changes", f"Its registered employee count {direction} from {first['employees']} ({first['date']}) to {last['employees']} ({last['date']}).", changes)
+
     timeline = records.get("official_timeline")
     recent = []
     for event in ((timeline or {}).get("value") or {}).get("events") or []:
         day = _parse_day(event.get("date") or "") if event.get("precision") == "day" else None
-        if day and 0 <= (today - day).days <= RECENT_DAYS and "Employee count" not in event.get("event", ""):
+        if day and 0 <= (today - day).days <= RECENT_DAYS and not any(word in event.get("event", "") for word in ROUTINE_EVENTS):
             recent.append(event)
+    # Substantive changes first (address, name, industry, capital, status), then filings; newest first within each.
+    recent.sort(key=lambda item: ("submitted" in item["event"] or "accounts" in item["event"].casefold(), _invert(item["date"])))
     if recent:
-        listed = "; ".join(f"{item['date']}: {item['event']}" for item in recent[:4])
-        say("changes", f"Recent register events: {listed}.", timeline)
+        listed, seen = [], set()
+        for item in recent:
+            if item["event"] not in seen:
+                seen.add(item["event"])
+                listed.append(f"{item['date']}: {item['event']}")
+        say("changes", f"Recent register events: {'; '.join(listed[:5])}.", timeline, changes if _ok(changes) else None)
     elif _ok(timeline):
         say("changes", "No register event in the last 18 months besides routine filings.", timeline)
 

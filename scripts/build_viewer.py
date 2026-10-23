@@ -55,6 +55,10 @@ def compact(profile: dict[str, Any]) -> dict[str, Any]:
         "jobs_src": _src(ev.get("jobs")),
         "posts": ((ev.get("company_posts") or {}).get("value") or {}).get("posts") or [],
         "posts_src": _src(ev.get("company_posts")),
+        "lei": ((ev.get("lei") or {}).get("value") or {}) if (ev.get("lei") or {}).get("status") == "available" else None,
+        "lei_src": _src(ev.get("lei")),
+        "registers": [{"label": item.get("licence"), "name": item.get("name"), "register": item.get("register"), "granted": item.get("granted"), "status": item.get("status"), "unit": item.get("unit_org"), "url": item.get("source_url")} for item in ((ev.get("licences") or {}).get("value") or {}).get("items") or []],
+        "inspections": [{"premises": item.get("premises"), "town": item.get("town"), "date": item.get("inspected"), "result": item.get("result"), "url": item.get("source_url")} for item in ((ev.get("food_inspections") or {}).get("value") or {}).get("items") or []][:20],
         "events": (((ev.get("official_timeline") or {}).get("value") or {}).get("events") or [])[:25],
     }
 
@@ -84,7 +88,7 @@ table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:4px 6px;b
 </style></head><body>
 <header><h1>Fjordlight · __COUNT__ company profiles</h1>
 <div class="controls"><input id="q" type="search" placeholder="Search name, org. number, town or industry" aria-label="Search">
-<select id="f" aria-label="Filter"><option value="">All companies</option><option value="website">With verified website</option><option value="jobs">With job ads</option><option value="posts">With dated posts</option><option value="social">With social profiles</option></select>
+<select id="f" aria-label="Filter"><option value="">All companies</option><option value="website">With verified website</option><option value="jobs">With job ads</option><option value="posts">With dated posts</option><option value="social">With social profiles</option><option value="registers">In licence or inspection registers</option><option value="lei">With LEI</option></select>
 <select id="cmp" aria-label="Compare with"><option value="">Compare with…</option></select></div></header>
 <main><nav id="list" aria-label="Companies"></nav><div id="detail"></div></main>
 <script id="data" type="application/json">__DATA__</script>
@@ -103,6 +107,11 @@ function card(c){
  ${c.years.length?`<p>Filed copies: ${c.years.slice(0,12).map(y=>link(y.url,y.year)).join(' ')}</p>${src(c.years_src)}`:''}</section>`;
  h+=`<section><h3>People and workplaces</h3>${c.roles.map(r=>`<span class="badge">${esc(r.role)}: ${esc(r.name)}</span>`).join('')}${src(c.roles_src)}
  ${c.workplaces.length?`<p>${c.workplaces.map(w=>`<span class="badge">${esc(w.name)} · ${esc(w.town||'')}</span>`).join('')}</p>${src(c.workplaces_src)}`:''}</section>`;
+ if(c.lei||c.registers.length||c.inspections.length){
+  const pr=p=>p&&p.name?`${esc(p.name)}${p.country?' ('+esc(p.country)+')':''}`:'';
+  h+=`<section><h3>Public registers</h3>${c.lei?`<p>LEI ${link('https://search.gleif.org/#/record/'+c.lei.lei,c.lei.lei)} · ${esc((c.lei.registration_status||'').toLowerCase())}${c.lei.next_renewal?' · renewal due '+esc(c.lei.next_renewal):''}${c.lei.direct_parent?'<br>Direct parent: '+pr(c.lei.direct_parent):''}${c.lei.ultimate_parent?'<br>Ultimate parent: '+pr(c.lei.ultimate_parent):''}</p>${src(c.lei_src)}`:''}
+  ${c.registers.length?'<ul>'+c.registers.map(r=>`<li>${esc(r.label)}${r.name&&r.unit!==c.org?' · '+esc(r.name):''}${r.granted?' · since '+esc(r.granted):''}${r.unit!==c.org?' · workplace '+esc(r.unit):''} · ${esc(r.register)} <a class="src" href="${esc(r.url)}" target="_blank" rel="noopener">source</a></li>`).join('')+'</ul>':''}
+  ${c.inspections.length?'<p><b>Food-safety inspections (Mattilsynet)</b></p><ul>'+c.inspections.map(i=>`<li>${esc(i.date)} · ${esc(i.premises)}${i.town?' ('+esc(i.town)+')':''}: ${esc(i.result)} <a class="src" href="${esc(i.url)}" target="_blank" rel="noopener">source</a></li>`).join('')+'</ul>':''}</section>`}
  h+=`<section><h3>Website and profiles</h3>${c.website?`<p>${link(c.website)}</p><p class="src">Why verified: ${esc((c.website_why||[]).join('; '))}</p>${src(c.website_src)}${c.social.length?'<p>'+c.social.map(s=>`<span class="badge">${link(s.url,s.platform)}</span>`).join('')+'</p>':''}`:unk('official_website')||'<p class="unk">Not verified.</p>'}</section>`;
  h+=`<section><h3>Hiring and dated activity</h3>${c.jobs.length?'<p><b>Job ads (NAV)</b></p><ul>'+c.jobs.map(j=>`<li>${esc((j.published||'').slice(0,10))} ${link(j.url,j.title)}</li>`).join('')+'</ul>'+src(c.jobs_src):unk('hiring')}
  ${c.posts.length?'<p><b>Website posts</b></p><ul>'+c.posts.slice(0,10).map(p=>`<li>${esc(p.published_at.slice(0,10))} ${link(p.url,p.title)}</li>`).join('')+'</ul>'+src(c.posts_src):''}
@@ -112,7 +121,7 @@ function show(){const a=D.find(c=>c.org===sel),b=D.find(c=>c.org===cmp);if(!a){$
  $('#detail').innerHTML=b&&b!==a?`<div class="cols"><div>${card(a)}</div><div>${card(b)}</div></div>`:card(a);
  document.querySelectorAll('.row').forEach(r=>r.classList.toggle('sel',r.dataset.org===sel));history.replaceState(null,'','#'+sel+(cmp?','+cmp:''))}
 function list(){const q=$('#q').value.trim().toLowerCase(),f=$('#f').value;
- const rows=D.filter(c=>(!q||[c.name,c.org,c.town,c.industry].join(' ').toLowerCase().includes(q))&&(!f||(f==='website'?c.website:f==='jobs'?c.jobs.length:f==='posts'?c.posts.length:c.social.length)));
+ const rows=D.filter(c=>(!q||[c.name,c.org,c.town,c.industry].join(' ').toLowerCase().includes(q))&&(!f||(f==='website'?c.website:f==='jobs'?c.jobs.length:f==='posts'?c.posts.length:f==='registers'?c.registers.length+c.inspections.length:f==='lei'?c.lei:c.social.length)));
  $('#list').innerHTML=rows.slice(0,400).map(c=>`<div class="row" tabindex="0" data-org="${c.org}"><b>${esc(c.name)}</b><small>${esc(c.org)} · ${esc(c.town||'')}${c.website?' · web':''}${c.jobs.length?' · jobs':''}</small></div>`).join('')+(rows.length>400?`<p class="src" style="padding:8px 16px">${rows.length-400} more, refine the search</p>`:'');
  document.querySelectorAll('.row').forEach(r=>{r.onclick=()=>{sel=r.dataset.org;show()};r.onkeydown=e=>{if(e.key==='Enter'){sel=r.dataset.org;show()}}})}
 $('#cmp').innerHTML+=D.map(c=>`<option value="${c.org}">${esc(c.name)}</option>`).join('');

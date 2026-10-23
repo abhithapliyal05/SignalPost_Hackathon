@@ -1,0 +1,70 @@
+{
+  "built_at": "2026-10-23T09:08:35Z",
+  "organisations": 111492,
+  "entries_by_source": {
+    "arbeidstilsynet_cleaning": 7978,
+    "finanstilsynet": 10147,
+    "fiskeridir_aquaculture": 499,
+    "gleif_lei": 63529,
+    "mattilsynet_inspections": 8663,
+    "udir_kindergartens": 10569,
+    "udir_schools": 10518,
+    "vegvesen_workshops": 5226
+  },
+  "sources": {
+    "gleif_lei": {
+      "file_retrieved_at": "2026-10-23T08:37:29Z",
+      "file_sha256": "193936262a721ee29708feacfd4c806a8e246bb61482022cc8120a3fbbef0fbb",
+      "licence": "CC0 1.0",
+      "url": "https://goldencopy.gleif.org/api/v2/golden-copies/publishes/latest"
+    },
+    "gleif_rr": {
+      "file_retrieved_at": "2026-10-23T08:42:06Z",
+      "file_sha256": "d677d764da2d7c3219215788e059972e050451011a138f7173940230e00f884d",
+      "licence": "CC0 1.0",
+      "url": "https://goldencopy.gleif.org/api/v2/golden-copies/publishes/latest"
+    },
+    "finanstilsynet": {
+      "file_retrieved_at": "2026-10-23T08:35:50Z",
+      "file_sha256": "a7cc81a5f2390ed08c92fa46bd47c0069d5efb4d23e8b23eba4e03edbfcadf9b",
+      "licence": "NLOD 2.0",
+      "url": "https://api.finanstilsynet.no/registry/v2/legal-entities/filter?countryCodes=NOR&entityType=Company&pageSize=50&page={page}"
+    },
+    "vegvesen_workshops": {
+      "file_retrieved_at": "2026-10-23T08:22:49Z",
+      "file_sha256": "c50934fddd8696d93a89bd26766b517ded0f9510611facb0f4c03d5e4c26b0e1",
+      "licence": "NLOD 2.0",
+      "url": "https://pkkvr-finn-godkjent-verksted-backend.atlas.vegvesen.no/export-csv?query=__ALL__"
+    },
+    "arbeidstilsynet_cleaning": {
+      "file_retrieved_at": "2026-10-23T08:04:10Z",
+      "file_sha256": "56b6a84b5b6986371b1df140d0d7b2c4e65f1aec0b690d5169f31a2d969af184",
+      "licence": "NLOD 2.0",
+      "url": "https://registerdata.arbeidstilsynet.no/renhold_register.xml"
+    },
+    "udir_kindergartens": {
+      "file_retrieved_at": "2026-10-23T08:43:49Z",
+      "file_sha256": "230b165d6b61f6ef36ca770e9678e62a8bdadd1668179f9d9dc46814a5bd73a1",
+      "licence": "NLOD 2.0",
+      "url": "https://data-nbr.udir.no/v4/enheter?sidenummer={page}&antallPerSide=5000"
+    },
+    "udir_schools": {
+      "file_retrieved_at": "2026-10-23T08:44:09Z",
+      "file_sha256": "2d00fb50b780513c6ff4225595ee5eff7e2bc87c8e133950e62fc4a6925ad698",
+      "licence": "NLOD 2.0",
+      "url": "https://data-nsr.udir.no/v4/enheter?sidenummer={page}&antallPerSide=5000"
+    },
+    "fiskeridir_aquaculture": {
+      "file_retrieved_at": "2026-10-23T08:44:50Z",
+      "file_sha256": "65dca92ff85223f320568c8f6031058cfdf6b0fc02671ff6b9330529232c61fe",
+      "licence": "NLOD 2.0",
+      "url": "https://api.fiskeridir.no/pub-aqua/api/v1/entities?range={start}-{end}"
+    },
+    "mattilsynet_inspections": {
+      "file_retrieved_at": "2026-10-23T08:01:28Z",
+      "file_sha256": "0360018afe79cdb9b9c1bc6196b6246a35499e6fc00d4e97a90325ebf0cf5728",
+      "licence": "NLOD 2.0",
+      "url": "https://smilefjes.mattilsynet.no/api/tilsyn.csv"
+    }
+  }
+}

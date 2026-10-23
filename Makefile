@@ -5,7 +5,7 @@ BULK ?= cache/brreg-enheter.csv.gz
 RUN_ID ?= local-$(shell date -u +%Y%m%dT%H%M%SZ)
 UV ?= uv
 
-.PHONY: install registry universe samples cache run coverage test replay clean-install-check
+.PHONY: install registry universe samples cache registers run coverage test replay clean-install-check
 
 install:
 	$(UV) sync --frozen
@@ -20,6 +20,9 @@ universe:
 
 cache:
 	$(UV) run python scripts/build_nav_cache.py
+
+registers:
+	$(UV) run python scripts/build_register_cache.py
 
 samples: universe
 	$(UV) run python scripts/sample_dev_val.py

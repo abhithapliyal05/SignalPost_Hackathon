@@ -26,6 +26,7 @@ from norway_company_agent.official import fetch_official_modules  # noqa: E402
 from norway_company_agent.registry_site import apply_registry_declared_rule  # noqa: E402
 from norway_company_agent.timeline import build_official_timeline  # noqa: E402
 from norway_company_agent.site_scope import apply_site_scope_guard  # noqa: E402
+from norway_company_agent.public_registers import MODULES as REGISTER_MODULES, RegisterIndex  # noqa: E402
 from norway_company_agent.site_posts import fetch_company_posts  # noqa: E402
 from norway_company_agent.summary import build_summary  # noqa: E402
 from norway_company_agent.website import fetch_website  # noqa: E402
@@ -46,7 +47,7 @@ def _env_number(name: str, default: float | None) -> float | None:
 
 
 # Modules not fetched by fetch_official_modules; they are built later in _enrich.
-DERIVED_MODULES = ("website", "jobs", "website_discovery", "company_posts", "official_timeline", "summary")
+DERIVED_MODULES = ("website", "jobs", "website_discovery", "company_posts", "lei", "licences", "food_inspections", "official_timeline", "summary")
 
 
 def unfinished_profile(profile: dict, fetch_modules: set[str], requested_modules: list[str], note: str, status: str = "blocked") -> dict:
@@ -77,8 +78,8 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--checkpoint-every", type=int, default=25)
     parser.add_argument("--resume", action="store_true")
-    parser.add_argument("--modules", default="registry,accounting_obligation,registry_live,financials,financial_history,roles,group,locations,website,jobs,website_discovery,company_posts,official_timeline,summary")
-    parser.add_argument("--cache-dir", default=str(ROOT / "data" / "cache"), help="Declared cache directory (NAV ads)")
+    parser.add_argument("--modules", default="registry,accounting_obligation,registry_live,financials,financial_history,roles,group,locations,registry_changes,website,jobs,website_discovery,company_posts,lei,licences,food_inspections,official_timeline,summary")
+    parser.add_argument("--cache-dir", default=str(ROOT / "data" / "cache"), help="Declared cache directory (NAV ads, public registers)")
     parser.add_argument("--nav-max-pages", type=int, default=60, help="Max NAV feed pages read at run start to bring the cache up to date")
     args = parser.parse_args()
 
@@ -118,6 +119,11 @@ def main() -> None:
         setup_started = time.monotonic()
         jobs_index = JobsIndex(args.cache_dir)
         run_setup["nav_feed"] = {**jobs_index.refresh(max_pages=args.nav_max_pages), "seconds": round(time.monotonic() - setup_started, 1)}
+    register_index = None
+    if set(REGISTER_MODULES) & set(requested_modules):
+        setup_started = time.monotonic()
+        register_index = RegisterIndex(args.cache_dir)
+        run_setup["register_cache"] = {**register_index.summary(), "seconds": round(time.monotonic() - setup_started, 1)}
 
     def enrich(profile: dict) -> tuple[dict, dict]:
         GATE.begin_company(profile["organisation_number"])
@@ -160,6 +166,10 @@ def main() -> None:
             apply_site_scope_guard(profile["evidence"]["website"], identity_index, profile)
         if "company_posts" in requested_modules:
             profile["evidence"]["company_posts"] = fetch_company_posts(profile["organisation_number"], profile["evidence"].get("website") or {})
+        if register_index is not None:
+            for module, record in register_index.lookup(profile).items():
+                if module in requested_modules:
+                    profile["evidence"][module] = record
         if "official_timeline" in requested_modules:
             profile["evidence"]["official_timeline"] = build_official_timeline(profile)
         if "summary" in requested_modules:

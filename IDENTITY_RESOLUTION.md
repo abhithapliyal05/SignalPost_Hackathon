@@ -88,3 +88,17 @@ group site and a kindergarten-chain site passing on contact proof alone.)
   "updated" or `lastBuildDate` time; undated, off-domain, future-dated and placeholder items
   ("Hello world!", "Protected: …", template headlines) are dropped. Withheld or unverified sites
   get no posts.
+
+## Public registers and register changes (2026-10-23)
+
+- **Matching is by organisation number only.** The public-register cache is keyed by the number
+  each register published. A company matches on its own number, or on a registered workplace's
+  number taken from its official subunit list; a workplace match is labelled with that
+  workplace's number. No name matching is used, so there is no false-friend risk.
+- **LEI parents** are GLEIF's accounting-consolidation relationships (`IS_DIRECTLY_CONSOLIDATED_BY`,
+  `IS_ULTIMATELY_CONSOLIDATED_BY`), active only. A lapsed LEI is reported as lapsed, not hidden.
+- **Licences** are the company's own: Finanstilsynet agent links (which name another firm's
+  licence) are dropped. Arbeidstilsynet's "Ikke godkjent" is reported as not approved.
+- **Food inspections** show the latest inspection per premises with Mattilsynet's own grade.
+- **Register changes** come from the update feed's JSON-patch changes, dated by the register.
+  Employee-count refreshes are folded into one series; routine bookkeeping fields are skipped.

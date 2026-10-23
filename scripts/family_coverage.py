@@ -29,6 +29,9 @@ FAMILIES: list[tuple[str, str | None]] = [
     ("hiring", "jobs"),
     ("dated_activity", "official_timeline"),
     ("company_posts", "company_posts"),
+    ("lei_and_parents", "lei"),
+    ("licences_permits", "licences"),
+    ("food_inspections", "food_inspections"),
 ]
 
 
@@ -58,6 +61,9 @@ def _facts(family: str, profile: dict[str, Any]) -> int:
         "hiring": lambda v: len(v.get("active_ads") or []),
         "dated_activity": lambda v: len(v.get("events") or []),
         "company_posts": lambda v: len(v.get("posts") or []),
+        "lei_and_parents": lambda v: 1 + sum(1 for key in ("direct_parent", "ultimate_parent") if v.get(key)),
+        "licences_permits": lambda v: len(v.get("items") or []),
+        "food_inspections": lambda v: len(v.get("items") or []),
     }
     return counters[family](value)
 
