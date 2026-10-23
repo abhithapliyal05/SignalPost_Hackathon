@@ -33,6 +33,7 @@ run:
 		--report $(OUT)/report.json \
 		--run-id $(RUN_ID)
 	$(UV) run python scripts/family_coverage.py --profiles $(OUT)/profiles.jsonl --output $(OUT)/family_coverage.json
+	$(UV) run python scripts/build_viewer.py --profiles $(OUT)/profiles.jsonl --output $(OUT)/viewer.html
 
 coverage:
 	$(UV) run python scripts/family_coverage.py --profiles $(OUT)/profiles.jsonl --output $(OUT)/family_coverage.json

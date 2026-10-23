@@ -23,6 +23,7 @@ from .identity_index import IdentityIndex
 from .website import _registered_domain
 
 METHOD = "shared_or_group_site_guard_v1"
+DOMAIN_HANDLE_METHODS = {"deterministic_name_org_evidence_v2", "strict_free_candidate_proof_v1"}
 LOCALE_SEGMENT = re.compile(r"^/(?:no|nb|nn|no-no|nb-no|nn-no|norge|norway)(?:/|$)", re.I)
 
 
@@ -53,6 +54,16 @@ def apply_site_scope_guard(website: dict[str, Any], index: IdentityIndex, profil
         dropped = [link for link in value.get("social_links") or [] if link not in kept]
         if dropped:
             value["social_links_dropped_weak_handle"] = dropped
+        # A handle that spells the verified domain (facebook.com/nordanger.no for nordanger.no) is the
+        # site's own profile. Only for sites proven by name/orgnr on the page, not registry-declared
+        # brand sites, where the domain may be a parent brand's.
+        if assessment.get("method") in DOMAIN_HANDLE_METHODS:
+            label = re.sub(r"[^a-z0-9]", "", verdict["domain"].rsplit(".", 1)[0])
+            for link in value.get("discovered_social_links") or []:
+                item = {"platform": link.get("platform"), "url": link.get("url")}
+                if item not in kept and len(label) >= 5 and handle_spells_domain(link.get("url"), label):
+                    kept.append({**item})
+                    value.setdefault("social_links_from_domain_handle", []).append(item)
         value["social_links"] = kept
     if verdict["withheld"]:
         value["withheld_by"] = METHOD
@@ -84,3 +95,11 @@ def social_handle_is_distinctive(profile: dict[str, Any], url: str) -> bool:
         return True
     present = [token for token in core if token in handle]
     return any(len(token) >= 5 for token in present) or (len(present) >= 2 and any(len(token) >= 4 for token in present))
+
+
+def handle_spells_domain(url: str | None, label: str) -> bool:
+    """The first path segment equals the domain label, optionally followed by its TLD."""
+    path = urllib.parse.unquote(urllib.parse.urlparse(url or "").path).strip("/").split("/")
+    first = path[0] if path and path[0] != "company" else (path[1] if len(path) > 1 else "")
+    compact = re.sub(r"[^a-z0-9]", "", first.casefold().lstrip("@"))
+    return compact in {label, label + "no", label + "as", label + "com"}

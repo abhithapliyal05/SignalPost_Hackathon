@@ -28,6 +28,7 @@ FAMILIES: list[tuple[str, str | None]] = [
     ("social_profiles", "website"),
     ("hiring", "jobs"),
     ("dated_activity", "official_timeline"),
+    ("company_posts", "company_posts"),
 ]
 
 
@@ -56,6 +57,7 @@ def _facts(family: str, profile: dict[str, Any]) -> int:
         "social_profiles": lambda v: len(v.get("social_links") or []) if (v.get("identity_assessment") or {}).get("publishable") else 0,
         "hiring": lambda v: len(v.get("active_ads") or []),
         "dated_activity": lambda v: len(v.get("events") or []),
+        "company_posts": lambda v: len(v.get("posts") or []),
     }
     return counters[family](value)
 

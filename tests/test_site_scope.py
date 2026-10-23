@@ -50,3 +50,29 @@ def test_short_name_token_inside_long_handle_is_not_enough():
     assert not social_handle_is_distinctive(profile, "https://facebook.com/rominteriorarkitekter")
     assert social_handle_is_distinctive({"name": "BOLIGTEKST AS"}, "https://facebook.com/Boligtekst")
     assert social_handle_is_distinctive({"name": "VASK OG BAD AS"}, "https://instagram.com/vaskogbad")
+
+
+def test_handle_spelling_the_verified_domain_is_kept():
+    site = _site("https://nordanger.no/")
+    site["value"]["identity_assessment"]["method"] = "strict_free_candidate_proof_v1"
+    site["value"]["social_links"] = []
+    site["value"]["discovered_social_links"] = [
+        {"platform": "facebook", "url": "https://facebook.com/nordanger.no"},
+        {"platform": "facebook", "url": "https://facebook.com/someagency"},
+    ]
+    apply_site_scope_guard(site, _index(**{"nordanger.no": 1}), {"name": "NORDANGER GULV AS"})
+    assert site["value"]["social_links"] == [{"platform": "facebook", "url": "https://facebook.com/nordanger.no"}]
+
+
+def test_company_posts_use_item_dates_and_same_domain_only():
+    from norway_company_agent.site_posts import parse_feed
+
+    feed = b"""<?xml version="1.0"?><rss><channel><lastBuildDate>Wed, 22 Oct 2026 10:00:00 GMT</lastBuildDate>
+    <item><title>Ny avtale</title><link>https://firma.no/nyheter/ny-avtale</link><pubDate>Mon, 06 Oct 2026 08:00:00 GMT</pubDate></item>
+    <item><title>Undated</title><link>https://firma.no/x</link></item>
+    <item><title>Elsewhere</title><link>https://other.no/y</link><pubDate>Mon, 06 Oct 2026 08:00:00 GMT</pubDate></item>
+    </channel></rss>"""
+    posts = parse_feed(feed, "https://firma.no/feed")
+    assert [post["title"] for post in posts] == ["Ny avtale"]
+    assert posts[0]["published_at"] == "2026-10-06T08:00:00Z"
+    assert parse_feed(b'<!DOCTYPE x [<!ENTITY a "b">]><rss/>', "https://firma.no/feed") == []
