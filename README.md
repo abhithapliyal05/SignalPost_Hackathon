@@ -52,6 +52,11 @@ No LLM and no paid API are used. Expected third-party cost per official run: $0.
 
 - `financial_history`: every year the company filed annual accounts, with the official PDF link
   (the kit had it off; measured on 2026-10-14 the endpoint took 100 calls without refusal).
+- `company_posts`: dated posts from the verified website's own RSS/Atom feed (one request).
+- `summary`: a short company summary built only from this profile's evidence, each sentence with
+  its sources, plus what remains unknown. Deterministic, no model.
+- `make run` also writes `viewer.html`: one self-contained page to search, filter, compare two
+  companies side by side and open every fact's source, on desktop and mobile.
 - `official_timeline`: dated events taken verbatim from the fetched register responses
   (founded, register entries, articles dated, role-group changes, accounts periods and filing
   years), each with its source URL, retrieval time and content hash. No extra requests.

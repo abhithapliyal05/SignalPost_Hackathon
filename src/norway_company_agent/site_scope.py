@@ -57,7 +57,9 @@ def apply_site_scope_guard(website: dict[str, Any], index: IdentityIndex, profil
         # A handle that spells the verified domain (facebook.com/nordanger.no for nordanger.no) is the
         # site's own profile. Only for sites proven by name/orgnr on the page, not registry-declared
         # brand sites, where the domain may be a parent brand's.
-        if assessment.get("method") in DOMAIN_HANDLE_METHODS:
+        registry_row = (profile.get("evidence", {}).get("registry") or {}).get("value") or {}
+        in_group = str(registry_row.get("erIKonsern") or "").casefold() == "true" or (profile.get("evidence", {}).get("group") or {}).get("status") == "available"
+        if assessment.get("method") in DOMAIN_HANDLE_METHODS and not in_group:
             label = re.sub(r"[^a-z0-9]", "", verdict["domain"].rsplit(".", 1)[0])
             for link in value.get("discovered_social_links") or []:
                 item = {"platform": link.get("platform"), "url": link.get("url")}

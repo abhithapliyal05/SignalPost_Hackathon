@@ -25,6 +25,7 @@ from .website import USER_AGENT, _gated_open, _registered_domain, _robots_allowe
 
 MAX_FEED_BYTES = 1_000_000
 MAX_POSTS = 20
+PLACEHOLDER_TITLE = re.compile(r"^(hello world!?|hei verden!?|protected:.*|private:.*|beskyttet:.*|sample page|eksempelside|lorem ipsum.*|post \d+( headline)?|test(post)?|untitled|uten tittel)$", re.I)
 SOURCE_TYPE = "company_owned_feed"
 
 
@@ -80,7 +81,7 @@ def parse_feed(raw: bytes, feed_url: str) -> list[dict[str, Any]]:
         link = _atom_link(node) if kind == "entry" else _child_text(node, "link")
         date_raw = _child_text(node, "pubdate", "date") if kind == "item" else _child_text(node, "published")
         date = _parse_date(date_raw)
-        if not (title and link and date):
+        if not (title and link and date) or PLACEHOLDER_TITLE.match(title.strip()):
             continue
         link = urllib.parse.urljoin(feed_url, link.strip())
         if urllib.parse.urlparse(link).scheme not in {"http", "https"} or _registered_domain(link) != domain:

@@ -76,3 +76,14 @@ def test_company_posts_use_item_dates_and_same_domain_only():
     assert [post["title"] for post in posts] == ["Ny avtale"]
     assert posts[0]["published_at"] == "2026-10-06T08:00:00Z"
     assert parse_feed(b'<!DOCTYPE x [<!ENTITY a "b">]><rss/>', "https://firma.no/feed") == []
+
+
+def test_placeholder_feed_items_are_dropped():
+    from norway_company_agent.site_posts import parse_feed
+
+    feed = b"""<rss><channel>
+    <item><title>Hello world!</title><link>https://firma.no/a</link><pubDate>Mon, 06 Oct 2025 08:00:00 GMT</pubDate></item>
+    <item><title>Protected: For ansatte</title><link>https://firma.no/b</link><pubDate>Mon, 06 Oct 2025 08:00:00 GMT</pubDate></item>
+    <item><title>Post 6 Headline</title><link>https://firma.no/c</link><pubDate>Mon, 06 Oct 2025 08:00:00 GMT</pubDate></item>
+    </channel></rss>"""
+    assert parse_feed(feed, "https://firma.no/feed") == []

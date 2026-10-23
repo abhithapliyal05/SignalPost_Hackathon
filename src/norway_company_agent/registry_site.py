@@ -44,6 +44,7 @@ GENERIC_TOKENS = {
     "forening", "lag", "klubb", "senter", "team", "prosjekt", "solutions", "systems", "energi", "eiendomsselskap",
 }
 MIN_TEXT_CHARS = 150
+NATIONAL_SUFFIX = re.compile(r"\b(NORWAY|NORGE|NORDIC|NORDICS|SCANDINAVIA|NORDEN)\b", re.I)
 
 
 def _captured_text(value: dict[str, Any]) -> str:
@@ -91,6 +92,9 @@ def assess_registry_declared(profile: dict[str, Any], website: dict[str, Any], i
         and not any(marker in lowered for marker in (*PARKED_MARKERS, *EXTRA_DEAD_MARKERS)),
         "no_foreign_orgnr": not foreign,
         "name_in_domain": carries_name(declared),
+        # "BRADY ENERGY NORWAY AS" declaring bradytechnologies.com: the national subsidiary of a
+        # foreign brand points at the parent's international site, not a site of its own.
+        "not_foreign_parent_site": not (declared and not declared.endswith(".no") and NATIONAL_SUFFIX.search(str(profile.get("name") or ""))),
     }
     failed = [name for name, ok in checks.items() if not ok]
     reason = (

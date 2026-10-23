@@ -86,3 +86,10 @@ def test_kit_published_site_is_left_alone():
     site["value"]["identity_assessment"] = {"publishable": True, "method": "deterministic_name_org_evidence_v2"}
     apply_registry_declared_rule(_profile(), site, _index())
     assert "registry_declared_check" not in site["value"]
+
+
+def test_national_subsidiary_declaring_foreign_brand_site_is_rejected():
+    profile = _profile(name="BRADY ENERGY NORWAY AS", website="www.bradytechnologies.com")
+    site = apply_registry_declared_rule(profile, _site(final_url="https://www.bradytechnologies.com/"), _index(**{"bradytechnologies.com": 1}))
+    assert not site["value"]["registry_declared_check"]["checks"]["not_foreign_parent_site"]
+    assert not site["value"]["identity_assessment"]["publishable"]
