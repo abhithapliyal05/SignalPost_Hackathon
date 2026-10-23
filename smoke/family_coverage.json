@@ -1,10 +1,10 @@
 {
   "companies": 100,
   "registry_website_listed": 6,
-  "total_requests": 648,
+  "total_requests": 762,
   "website_publication_methods": {
-    "deterministic_name_org_evidence_v2": 3,
-    "strict_free_candidate_proof_v1": 1
+    "strict_free_candidate_proof_v1": 4,
+    "deterministic_name_org_evidence_v2": 1
   },
   "families": {
     "legal_identity": {
@@ -64,12 +64,13 @@
     },
     "official_website": {
       "module": "website",
-      "companies_covered": 4,
-      "company_coverage": 0.04,
-      "facts": 4,
+      "companies_covered": 5,
+      "company_coverage": 0.05,
+      "facts": 5,
       "states": {
-        "available": 7,
-        "not_found": 93
+        "available": 9,
+        "not_found": 90,
+        "source_error": 1
       }
     },
     "social_profiles": {
@@ -78,8 +79,9 @@
       "company_coverage": 0.02,
       "facts": 5,
       "states": {
-        "available": 7,
-        "not_found": 93
+        "available": 9,
+        "not_found": 90,
+        "source_error": 1
       }
     },
     "hiring": {
@@ -96,17 +98,57 @@
       "module": "official_timeline",
       "companies_covered": 100,
       "company_coverage": 1.0,
-      "facts": 2155,
+      "facts": 2331,
       "states": {
         "available": 100
+      }
+    },
+    "company_posts": {
+      "module": "company_posts",
+      "companies_covered": 0,
+      "company_coverage": 0.0,
+      "facts": 0,
+      "states": {
+        "not_applicable": 95,
+        "not_found": 5
+      }
+    },
+    "lei_and_parents": {
+      "module": "lei",
+      "companies_covered": 9,
+      "company_coverage": 0.09,
+      "facts": 9,
+      "states": {
+        "available": 9,
+        "not_found": 91
+      }
+    },
+    "licences_permits": {
+      "module": "licences",
+      "companies_covered": 5,
+      "company_coverage": 0.05,
+      "facts": 6,
+      "states": {
+        "available": 5,
+        "not_found": 95
+      }
+    },
+    "food_inspections": {
+      "module": "food_inspections",
+      "companies_covered": 1,
+      "company_coverage": 0.01,
+      "facts": 1,
+      "states": {
+        "available": 1,
+        "not_found": 99
       }
     }
   },
   "per_company": [
     {
       "organisation_number": "993805165",
-      "requests": 12,
-      "registry_requests": 6,
+      "requests": 13,
+      "registry_requests": 7,
       "web_requests": 9,
       "families": {
         "legal_identity": 1,
@@ -118,13 +160,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 27,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -134,8 +184,8 @@
     },
     {
       "organisation_number": "941505686",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -147,13 +197,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 27,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -163,8 +221,8 @@
     },
     {
       "organisation_number": "918760857",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -176,13 +234,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 19
+        "dated_activity": 20,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -192,8 +258,8 @@
     },
     {
       "organisation_number": "989216953",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -205,13 +271,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 31
+        "dated_activity": 32,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -221,8 +295,8 @@
     },
     {
       "organisation_number": "998364914",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -234,13 +308,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 27
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -250,8 +332,8 @@
     },
     {
       "organisation_number": "917144273",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -263,13 +345,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 19
+        "dated_activity": 20,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -279,9 +369,9 @@
     },
     {
       "organisation_number": "934379950",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 2,
@@ -292,13 +382,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 12
+        "dated_activity": 13,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -308,9 +406,9 @@
     },
     {
       "organisation_number": "976500997",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 11,
+      "registry_requests": 7,
+      "web_requests": 6,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -318,28 +416,36 @@
         "leadership_roles": 3,
         "group_structure": 0,
         "registered_workplaces": 1,
-        "official_website": 0,
+        "official_website": 1,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 29
+        "dated_activity": 30,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_found",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
         "roles": "available",
-        "website": "not_found"
+        "website": "available"
       }
     },
     {
       "organisation_number": "935435102",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 13,
+      "registry_requests": 7,
+      "web_requests": 5,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 1,
@@ -347,27 +453,35 @@
         "leadership_roles": 2,
         "group_structure": 0,
         "registered_workplaces": 1,
-        "official_website": 0,
-        "social_profiles": 0,
+        "official_website": 1,
+        "social_profiles": 2,
         "hiring": 0,
-        "dated_activity": 10
+        "dated_activity": 18,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_found",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
         "roles": "available",
-        "website": "not_found"
+        "website": "available"
       }
     },
     {
       "organisation_number": "927470519",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -379,13 +493,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 15
+        "dated_activity": 18,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -395,8 +517,8 @@
     },
     {
       "organisation_number": "984867670",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -408,13 +530,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -424,9 +554,9 @@
     },
     {
       "organisation_number": "928771776",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 6,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -437,13 +567,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 15
+        "dated_activity": 16,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -453,9 +591,9 @@
     },
     {
       "organisation_number": "927049708",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 3,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -466,13 +604,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 17
+        "dated_activity": 18,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -482,8 +628,8 @@
     },
     {
       "organisation_number": "936165206",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -495,13 +641,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 10
+        "dated_activity": 13,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -511,8 +665,8 @@
     },
     {
       "organisation_number": "928635449",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -524,13 +678,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 17,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -540,8 +702,8 @@
     },
     {
       "organisation_number": "917350477",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -553,13 +715,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 28
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -569,8 +739,8 @@
     },
     {
       "organisation_number": "941027563",
-      "requests": 14,
-      "registry_requests": 6,
+      "requests": 15,
+      "registry_requests": 7,
       "web_requests": 7,
       "families": {
         "legal_identity": 1,
@@ -579,16 +749,24 @@
         "leadership_roles": 5,
         "group_structure": 1,
         "registered_workplaces": 1,
-        "official_website": 1,
-        "social_profiles": 2,
+        "official_website": 0,
+        "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 25
+        "dated_activity": 26,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 1,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "available",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -598,8 +776,8 @@
     },
     {
       "organisation_number": "932438054",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -611,13 +789,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 15,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -627,8 +813,8 @@
     },
     {
       "organisation_number": "926597159",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -640,13 +826,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 18,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -656,8 +850,8 @@
     },
     {
       "organisation_number": "932751151",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -669,13 +863,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 13
+        "dated_activity": 14,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -685,8 +887,8 @@
     },
     {
       "organisation_number": "932258242",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -698,13 +900,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 17
+        "dated_activity": 18,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -714,8 +924,8 @@
     },
     {
       "organisation_number": "924636866",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -727,13 +937,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 17
+        "dated_activity": 18,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -743,8 +961,8 @@
     },
     {
       "organisation_number": "922337195",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -756,13 +974,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 24,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -772,8 +998,8 @@
     },
     {
       "organisation_number": "889185082",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -785,13 +1011,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 27,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -801,8 +1035,8 @@
     },
     {
       "organisation_number": "990866309",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -814,13 +1048,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 30
+        "dated_activity": 31,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -830,9 +1072,9 @@
     },
     {
       "organisation_number": "932941384",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 2,
@@ -843,13 +1085,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 16,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -859,8 +1109,8 @@
     },
     {
       "organisation_number": "991430091",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -872,13 +1122,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 28,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -888,8 +1146,8 @@
     },
     {
       "organisation_number": "926782703",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -901,13 +1159,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 17,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -917,9 +1183,9 @@
     },
     {
       "organisation_number": "988850594",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -930,13 +1196,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 27
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -946,8 +1220,8 @@
     },
     {
       "organisation_number": "935257778",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 4,
       "families": {
         "legal_identity": 1,
@@ -959,13 +1233,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 17,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 2,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "available",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -975,8 +1257,8 @@
     },
     {
       "organisation_number": "983514243",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 3,
       "families": {
         "legal_identity": 1,
@@ -988,13 +1270,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 27,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1004,8 +1294,8 @@
     },
     {
       "organisation_number": "971589795",
-      "requests": 12,
-      "registry_requests": 6,
+      "requests": 13,
+      "registry_requests": 7,
       "web_requests": 6,
       "families": {
         "legal_identity": 1,
@@ -1017,13 +1307,21 @@
         "official_website": 1,
         "social_profiles": 3,
         "hiring": 1,
-        "dated_activity": 29
+        "dated_activity": 32,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_found",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "available",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1033,9 +1331,9 @@
     },
     {
       "organisation_number": "983756441",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 3,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1046,13 +1344,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 31
+        "dated_activity": 32,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1062,8 +1368,8 @@
     },
     {
       "organisation_number": "930844667",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1075,13 +1381,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 19,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1091,8 +1405,8 @@
     },
     {
       "organisation_number": "926799169",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1104,13 +1418,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 19
+        "dated_activity": 24,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1120,8 +1442,8 @@
     },
     {
       "organisation_number": "924301902",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1133,13 +1455,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 17,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1149,9 +1479,9 @@
     },
     {
       "organisation_number": "997383907",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 7,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1162,13 +1492,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 25
+        "dated_activity": 26,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1178,8 +1516,8 @@
     },
     {
       "organisation_number": "931754890",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1191,13 +1529,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 15,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1207,8 +1553,8 @@
     },
     {
       "organisation_number": "961103940",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1220,13 +1566,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 27,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1236,8 +1590,8 @@
     },
     {
       "organisation_number": "920334709",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1249,13 +1603,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 19
+        "dated_activity": 20,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1265,9 +1627,9 @@
     },
     {
       "organisation_number": "911711761",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 3,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1278,13 +1640,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 24
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1294,9 +1664,9 @@
     },
     {
       "organisation_number": "991192190",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1307,13 +1677,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 29
+        "dated_activity": 30,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1323,8 +1701,8 @@
     },
     {
       "organisation_number": "927709309",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1336,13 +1714,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 15
+        "dated_activity": 16,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1352,8 +1738,8 @@
     },
     {
       "organisation_number": "921202237",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1365,13 +1751,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 19
+        "dated_activity": 20,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1381,8 +1775,8 @@
     },
     {
       "organisation_number": "914416833",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1394,13 +1788,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 24,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1410,8 +1812,8 @@
     },
     {
       "organisation_number": "929887255",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1423,13 +1825,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 15,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1439,9 +1849,9 @@
     },
     {
       "organisation_number": "913429184",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1452,13 +1862,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 27
+        "dated_activity": 28,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1468,9 +1886,9 @@
     },
     {
       "organisation_number": "819828512",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 2,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1481,13 +1899,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 24,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1497,8 +1923,8 @@
     },
     {
       "organisation_number": "994013270",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1510,13 +1936,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 24
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1526,8 +1960,8 @@
     },
     {
       "organisation_number": "848953032",
-      "requests": 16,
-      "registry_requests": 6,
+      "requests": 17,
+      "registry_requests": 7,
       "web_requests": 8,
       "families": {
         "legal_identity": 1,
@@ -1539,13 +1973,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 26
+        "dated_activity": 27,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1555,8 +1997,8 @@
     },
     {
       "organisation_number": "929311329",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1568,13 +2010,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 15,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1584,8 +2034,8 @@
     },
     {
       "organisation_number": "925019100",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1597,13 +2047,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 22
+        "dated_activity": 23,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1613,8 +2071,8 @@
     },
     {
       "organisation_number": "930355313",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1626,13 +2084,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 17,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1642,8 +2108,8 @@
     },
     {
       "organisation_number": "915114105",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1655,13 +2121,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 24
+        "dated_activity": 26,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1671,9 +2145,9 @@
     },
     {
       "organisation_number": "932355973",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 6,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 2,
@@ -1684,13 +2158,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 17
+        "dated_activity": 19,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1700,8 +2182,8 @@
     },
     {
       "organisation_number": "929829662",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1713,13 +2195,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 15,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1729,8 +2219,8 @@
     },
     {
       "organisation_number": "912851532",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1742,13 +2232,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 25
+        "dated_activity": 26,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1758,8 +2256,8 @@
     },
     {
       "organisation_number": "915951201",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1771,13 +2269,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 25
+        "dated_activity": 26,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1787,9 +2293,9 @@
     },
     {
       "organisation_number": "916690398",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 7,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1800,13 +2306,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1816,8 +2330,8 @@
     },
     {
       "organisation_number": "994000225",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1829,13 +2343,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 25
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1845,8 +2367,8 @@
     },
     {
       "organisation_number": "997811003",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 2,
       "families": {
         "legal_identity": 1,
@@ -1858,13 +2380,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 27
+        "dated_activity": 28,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1874,8 +2404,8 @@
     },
     {
       "organisation_number": "924760656",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1887,13 +2417,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 22
+        "dated_activity": 24,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1903,9 +2441,9 @@
     },
     {
       "organisation_number": "928980596",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 6,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1916,13 +2454,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 17,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1932,8 +2478,8 @@
     },
     {
       "organisation_number": "886925972",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -1945,13 +2491,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 27
+        "dated_activity": 28,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1961,9 +2515,9 @@
     },
     {
       "organisation_number": "929495853",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -1974,13 +2528,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 20
+        "dated_activity": 21,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 1
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "available",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -1990,8 +2552,8 @@
     },
     {
       "organisation_number": "990114072",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2003,13 +2565,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 30
+        "dated_activity": 31,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2019,9 +2589,9 @@
     },
     {
       "organisation_number": "916073836",
-      "requests": 8,
-      "registry_requests": 6,
-      "web_requests": 3,
+      "requests": 11,
+      "registry_requests": 7,
+      "web_requests": 14,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2029,27 +2599,35 @@
         "leadership_roles": 5,
         "group_structure": 0,
         "registered_workplaces": 1,
-        "official_website": 1,
+        "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 25
+        "dated_activity": 27,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 1,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "available",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
         "roles": "available",
-        "website": "available"
+        "website": "source_error"
       }
     },
     {
       "organisation_number": "887438382",
-      "requests": 12,
-      "registry_requests": 6,
+      "requests": 13,
+      "registry_requests": 7,
       "web_requests": 9,
       "families": {
         "legal_identity": 1,
@@ -2061,13 +2639,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 17
+        "dated_activity": 19,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2077,9 +2663,9 @@
     },
     {
       "organisation_number": "920513727",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 6,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2090,13 +2676,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 19
+        "dated_activity": 21,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2106,8 +2700,8 @@
     },
     {
       "organisation_number": "817829422",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2119,13 +2713,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 20
+        "dated_activity": 21,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2135,8 +2737,8 @@
     },
     {
       "organisation_number": "925923702",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2148,13 +2750,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 17
+        "dated_activity": 18,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2164,8 +2774,8 @@
     },
     {
       "organisation_number": "935856620",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2177,13 +2787,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 15
+        "dated_activity": 19,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2193,8 +2811,8 @@
     },
     {
       "organisation_number": "950515988",
-      "requests": 16,
-      "registry_requests": 6,
+      "requests": 17,
+      "registry_requests": 7,
       "web_requests": 6,
       "families": {
         "legal_identity": 1,
@@ -2206,13 +2824,21 @@
         "official_website": 1,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 28
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_found",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2222,9 +2848,9 @@
     },
     {
       "organisation_number": "815095022",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 4,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 11,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2235,13 +2861,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 22
+        "dated_activity": 23,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2251,8 +2885,8 @@
     },
     {
       "organisation_number": "812836722",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2264,13 +2898,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2280,8 +2922,8 @@
     },
     {
       "organisation_number": "924550686",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2293,13 +2935,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 22
+        "dated_activity": 23,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2309,9 +2959,9 @@
     },
     {
       "organisation_number": "912681602",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2322,13 +2972,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 30
+        "dated_activity": 34,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2338,9 +2996,9 @@
     },
     {
       "organisation_number": "929289218",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2351,13 +3009,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 16
+        "dated_activity": 17,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2367,8 +3033,8 @@
     },
     {
       "organisation_number": "936796273",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2380,13 +3046,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 9
+        "dated_activity": 11,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2396,8 +3070,8 @@
     },
     {
       "organisation_number": "992640774",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2409,13 +3083,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 31
+        "dated_activity": 32,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "available",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2425,8 +3107,8 @@
     },
     {
       "organisation_number": "998770343",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 3,
       "families": {
         "legal_identity": 1,
@@ -2438,13 +3120,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 24
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2454,8 +3144,8 @@
     },
     {
       "organisation_number": "996553132",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2467,13 +3157,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 29
+        "dated_activity": 31,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2483,8 +3181,8 @@
     },
     {
       "organisation_number": "934801989",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2496,13 +3194,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 11
+        "dated_activity": 12,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2512,8 +3218,8 @@
     },
     {
       "organisation_number": "995435977",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2525,13 +3231,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 25
+        "dated_activity": 28,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2541,8 +3255,8 @@
     },
     {
       "organisation_number": "913440404",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 4,
       "families": {
         "legal_identity": 1,
@@ -2554,13 +3268,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 22
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2570,9 +3292,9 @@
     },
     {
       "organisation_number": "928792064",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 9,
+      "registry_requests": 7,
+      "web_requests": 3,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2580,27 +3302,35 @@
         "leadership_roles": 3,
         "group_structure": 0,
         "registered_workplaces": 1,
-        "official_website": 0,
+        "official_website": 1,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 18
+        "dated_activity": 21,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_found",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
         "roles": "available",
-        "website": "not_found"
+        "website": "available"
       }
     },
     {
       "organisation_number": "816281512",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2612,13 +3342,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 24
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2628,8 +3366,8 @@
     },
     {
       "organisation_number": "924156562",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2641,13 +3379,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 28
+        "dated_activity": 29,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2657,8 +3403,8 @@
     },
     {
       "organisation_number": "811546402",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2670,13 +3416,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2686,8 +3440,8 @@
     },
     {
       "organisation_number": "914550033",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2699,13 +3453,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 22
+        "dated_activity": 23,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2715,9 +3477,9 @@
     },
     {
       "organisation_number": "997808029",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 6,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2728,13 +3490,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 28
+        "dated_activity": 32,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2744,8 +3514,8 @@
     },
     {
       "organisation_number": "967418153",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2757,13 +3527,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 30
+        "dated_activity": 32,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 1,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "available",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2773,9 +3551,9 @@
     },
     {
       "organisation_number": "934285018",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 5,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 1,
@@ -2786,13 +3564,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 14
+        "dated_activity": 23,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2802,9 +3588,9 @@
     },
     {
       "organisation_number": "989981803",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 6,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2815,13 +3601,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 30
+        "dated_activity": 31,
+        "company_posts": 0,
+        "lei_and_parents": 1,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "available",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2831,9 +3625,9 @@
     },
     {
       "organisation_number": "823070632",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 3,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2844,13 +3638,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2860,8 +3662,8 @@
     },
     {
       "organisation_number": "921105762",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2873,13 +3675,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 20
+        "dated_activity": 21,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2889,9 +3699,9 @@
     },
     {
       "organisation_number": "818521162",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2902,13 +3712,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 21
+        "dated_activity": 22,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 1,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "available",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2918,8 +3736,8 @@
     },
     {
       "organisation_number": "996108333",
-      "requests": 6,
-      "registry_requests": 6,
+      "requests": 7,
+      "registry_requests": 7,
       "web_requests": 0,
       "families": {
         "legal_identity": 1,
@@ -2931,13 +3749,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 27
+        "dated_activity": 28,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2947,9 +3773,9 @@
     },
     {
       "organisation_number": "918313214",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2960,13 +3786,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 24,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",
@@ -2976,9 +3810,9 @@
     },
     {
       "organisation_number": "921147252",
-      "requests": 6,
-      "registry_requests": 6,
-      "web_requests": 0,
+      "requests": 7,
+      "registry_requests": 7,
+      "web_requests": 4,
       "families": {
         "legal_identity": 1,
         "annual_accounts": 3,
@@ -2989,13 +3823,21 @@
         "official_website": 0,
         "social_profiles": 0,
         "hiring": 0,
-        "dated_activity": 23
+        "dated_activity": 25,
+        "company_posts": 0,
+        "lei_and_parents": 0,
+        "licences_permits": 0,
+        "food_inspections": 0
       },
       "states": {
+        "company_posts": "not_applicable",
         "financial_history": "available",
         "financials": "available",
+        "food_inspections": "not_found",
         "group": "not_found",
         "jobs": "not_found",
+        "lei": "not_found",
+        "licences": "not_found",
         "locations": "available",
         "official_timeline": "available",
         "registry_live": "available",

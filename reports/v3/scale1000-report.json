@@ -1,0 +1,188 @@
+{
+  "run_id": "scale1000v6",
+  "started_at": "2026-10-23T09:15:08.052764Z",
+  "completed_at": "2026-10-23T09:36:21.292596Z",
+  "expected_count": 1000,
+  "emitted_envelopes": 1000,
+  "resumed_profiles": 0,
+  "profiles_fetched_this_run": 1000,
+  "modules": [
+    "registry",
+    "accounting_obligation",
+    "registry_live",
+    "financials",
+    "financial_history",
+    "roles",
+    "group",
+    "locations",
+    "registry_changes",
+    "website",
+    "jobs",
+    "website_discovery",
+    "company_posts",
+    "lei",
+    "licences",
+    "food_inspections",
+    "official_timeline",
+    "summary"
+  ],
+  "registry": {
+    "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
+    "registry_rows_scanned": 1177959,
+    "requested": 1000,
+    "selected": 994,
+    "absent_from_snapshot": [
+      "922564183",
+      "928987728",
+      "982170931",
+      "931031333",
+      "912695875",
+      "920444040"
+    ]
+  },
+  "operations": {
+    "requests": 7766,
+    "bytes": 82196654,
+    "p50_ms": 749,
+    "p95_ms": 981
+  },
+  "run_setup": {
+    "identity_index": {
+      "entities": 1177958,
+      "distinct_phones": 407082,
+      "distinct_addresses": 742503,
+      "distinct_email_domains": 92014,
+      "distinct_homepage_domains": 84728,
+      "seconds": 57.6
+    },
+    "nav_feed": {
+      "status": "caught_up",
+      "pages": 19,
+      "token_kind": "public",
+      "cache_built_at": "2026-10-14T10:29:42.754608Z",
+      "cached_active_ads": 9715,
+      "now_inactive": 3345,
+      "new_active_headers": 11477,
+      "last_page_retrieved_at": "2026-10-23T09:16:53.006118Z",
+      "seconds": 20.4
+    },
+    "register_cache": {
+      "available": true,
+      "organisations": 111492,
+      "built_at": "2026-10-23T09:08:35Z",
+      "entries_by_source": {
+        "arbeidstilsynet_cleaning": 7978,
+        "finanstilsynet": 10147,
+        "fiskeridir_aquaculture": 499,
+        "gleif_lei": 63529,
+        "mattilsynet_inspections": 8663,
+        "udir_kindergartens": 10569,
+        "udir_schools": 10518,
+        "vegvesen_workshops": 5226
+      },
+      "seconds": 0.4
+    }
+  },
+  "gate": {
+    "registry_requests": 7002,
+    "web_requests": 2125,
+    "total_requests": 9127,
+    "web_cap": null,
+    "registry_cap": null,
+    "total_cap": 19000,
+    "refused": {},
+    "cap_hit": false,
+    "deadline_s": 2280,
+    "deadline_hit": false,
+    "host_interval_s": 1.0,
+    "request_timeout_s": 10.0,
+    "max_attempts": 2,
+    "hard_stopped": false,
+    "elapsed_s": 1274.7
+  },
+  "module_states": {
+    "registry": {
+      "complete": 994,
+      "not_found": 6
+    },
+    "accounting_obligation": {
+      "complete": 1000
+    },
+    "registry_live": {
+      "complete": 1000
+    },
+    "financials": {
+      "complete": 997,
+      "not_found": 1,
+      "source_error": 2
+    },
+    "financial_history": {
+      "complete": 1000
+    },
+    "roles": {
+      "complete": 994,
+      "not_found": 6
+    },
+    "group": {
+      "complete": 69,
+      "not_found": 931
+    },
+    "locations": {
+      "complete": 1000
+    },
+    "registry_changes": {
+      "complete": 1000
+    },
+    "website": {
+      "blocked_policy": 5,
+      "blocked_robots": 2,
+      "complete": 121,
+      "not_found": 863,
+      "source_error": 9
+    },
+    "jobs": {
+      "complete": 6,
+      "not_found": 994
+    },
+    "website_discovery": {
+      "complete": 33,
+      "not_applicable": 45,
+      "not_found": 922
+    },
+    "company_posts": {
+      "complete": 15,
+      "not_applicable": 927,
+      "not_found": 57,
+      "source_error": 1
+    },
+    "lei": {
+      "complete": 134,
+      "not_found": 866
+    },
+    "licences": {
+      "complete": 46,
+      "not_found": 954
+    },
+    "food_inspections": {
+      "complete": 19,
+      "not_found": 981
+    },
+    "official_timeline": {
+      "complete": 1000
+    },
+    "summary": {
+      "complete": 1000
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "unique_organisation_numbers": true,
+      "all_entity_states_terminal": true,
+      "all_module_states_terminal": true,
+      "zero_silent_drops": true
+    },
+    "invalid_states": []
+  }
+}
