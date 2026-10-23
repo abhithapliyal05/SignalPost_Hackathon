@@ -43,6 +43,7 @@ class RequestGate:
         *,
         web_cap: int | None = 1900,
         registry_cap: int | None = None,
+        total_cap: int | None = None,
         deadline_s: float | None = None,
         host_interval: float = 1.0,
         clock: Callable[[], float] = time.monotonic,
@@ -52,13 +53,14 @@ class RequestGate:
         self._local = threading.local()
         self._clock = clock
         self._sleeper = sleeper
-        self.configure(web_cap=web_cap, registry_cap=registry_cap, deadline_s=deadline_s, host_interval=host_interval)
+        self.configure(web_cap=web_cap, registry_cap=registry_cap, total_cap=total_cap, deadline_s=deadline_s, host_interval=host_interval)
 
     def configure(
         self,
         *,
         web_cap: int | None = 1900,
         registry_cap: int | None = None,
+        total_cap: int | None = None,
         deadline_s: float | None = None,
         host_interval: float = 1.0,
         started_at: float | None = None,
@@ -66,6 +68,7 @@ class RequestGate:
         with self._lock:
             self.web_cap = web_cap
             self.registry_cap = registry_cap
+            self.total_cap = total_cap
             self.host_interval = host_interval
             self.started_at = self._clock() if started_at is None else started_at
             self.deadline_at = None if deadline_s is None else self.started_at + deadline_s
@@ -108,6 +111,9 @@ class RequestGate:
             if self.past_deadline():
                 self.deadline_hit = True
                 reason = f"{BUDGET_PREFIX}: wall-clock deadline reached"
+            elif self.total_cap is not None and self.registry_requests + self.web_requests >= self.total_cap:
+                self.cap_hit = True
+                reason = f"{BUDGET_PREFIX}: total request cap {self.total_cap} spent"
             elif registry and self.registry_cap is not None and self.registry_requests >= self.registry_cap:
                 self.cap_hit = True
                 reason = f"{BUDGET_PREFIX}: registry request cap {self.registry_cap} spent"
@@ -148,6 +154,7 @@ class RequestGate:
                 "total_requests": self.registry_requests + self.web_requests,
                 "web_cap": self.web_cap,
                 "registry_cap": self.registry_cap,
+                "total_cap": self.total_cap,
                 "refused": dict(self.refused),
                 "cap_hit": self.cap_hit,
                 "deadline_s": self.deadline_s,
@@ -165,4 +172,5 @@ def is_budget_note(note: Any) -> bool:
 GATE = RequestGate(
     web_cap=_env_int("SIGNALPOST_WEB_REQUEST_CAP", 1900),
     registry_cap=_env_int("SIGNALPOST_REGISTRY_REQUEST_CAP", None),
+    total_cap=_env_int("SIGNALPOST_TOTAL_REQUEST_CAP", None),
 )

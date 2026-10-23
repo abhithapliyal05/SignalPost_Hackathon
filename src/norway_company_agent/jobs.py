@@ -87,6 +87,17 @@ def compact_ad(raw: dict[str, Any], *, detail_url: str, retrieved_at: str, conte
     }
 
 
+AD_PAGE = "https://arbeidsplassen.nav.no/stillinger/stilling/{uuid}"
+
+
+def single_ad_view(row: dict[str, Any]) -> dict[str, Any]:
+    """Point every published ad at its own NAV ad page; keep an employer link only if it is that ad."""
+    ad_url = AD_PAGE.format(uuid=row["uuid"])
+    link = str(row.get("link") or "")
+    keep = link.startswith("https://arbeidsplassen.nav.no/") and row["uuid"] in link
+    return {**row, "ad_url": ad_url, "link": link if keep else None, "employer_link_dropped": bool(link) and not keep}
+
+
 def _http_get(url: str, token: str | None, *, gated: bool) -> tuple[int, bytes]:
     if gated:
         refusal = GATE.acquire(url)
@@ -221,7 +232,7 @@ class JobsIndex:
         for orgnr in allowed:
             for uuid in self._by_orgnr.get(orgnr, []):
                 if uuid not in self.removed:
-                    matched[uuid] = {**self.ads[uuid], "matched_via": "organisation_number" if orgnr == org else f"subunit:{orgnr}", "snapshot": "declared_cache"}
+                    matched[uuid] = {**single_ad_view(self.ads[uuid]), "matched_via": "organisation_number" if orgnr == org else f"subunit:{orgnr}", "snapshot": "declared_cache"}
         unconfirmed = 0
         budget_note = None
         for name in names:
@@ -237,7 +248,7 @@ class JobsIndex:
                     unconfirmed += 1
                     continue
                 if row and row.get("employer_orgnr") in allowed:
-                    matched[row["uuid"]] = {**row, "matched_via": "organisation_number" if row["employer_orgnr"] == org else f"subunit:{row['employer_orgnr']}", "snapshot": "live"}
+                    matched[row["uuid"]] = {**single_ad_view(row), "matched_via": "organisation_number" if row["employer_orgnr"] == org else f"subunit:{row['employer_orgnr']}", "snapshot": "live"}
                 elif row:
                     unconfirmed += 1
         ads = sorted(matched.values(), key=lambda row: (row.get("published") or "", row["uuid"]), reverse=True)

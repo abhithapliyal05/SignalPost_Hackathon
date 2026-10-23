@@ -25,6 +25,7 @@ from norway_company_agent.site_verify import discover_website, publish_discovere
 from norway_company_agent.official import fetch_official_modules  # noqa: E402
 from norway_company_agent.registry_site import apply_registry_declared_rule  # noqa: E402
 from norway_company_agent.timeline import build_official_timeline  # noqa: E402
+from norway_company_agent.site_scope import apply_site_scope_guard  # noqa: E402
 from norway_company_agent.website import fetch_website  # noqa: E402
 
 
@@ -67,7 +68,8 @@ def main() -> None:
     parser.add_argument("--expected-count", type=int, default=None, help="Defaults to the number of input organisations")
     parser.add_argument("--deadline-seconds", type=float, default=_env_number("SIGNALPOST_DEADLINE_SECONDS", 38 * 60), help="Stop fetching this long after process start (default 38 min)")
     parser.add_argument("--hard-stop-grace-seconds", type=float, default=60.0, help="After the deadline, wait this long for in-flight companies before writing envelopes anyway")
-    parser.add_argument("--web-request-cap", type=int, default=GATE.web_cap, help="Non-registry outbound request cap (env SIGNALPOST_WEB_REQUEST_CAP)")
+    parser.add_argument("--web-request-cap", type=int, default=int(os.environ["SIGNALPOST_WEB_REQUEST_CAP"]) if os.environ.get("SIGNALPOST_WEB_REQUEST_CAP") else None, help="Optional non-registry outbound request cap (env SIGNALPOST_WEB_REQUEST_CAP); the total cap always applies")
+    parser.add_argument("--total-request-cap", type=int, default=GATE.total_cap, help="All outbound requests (registry, web, retries, redirects) per run; default 19 per company (Builderr counts 2,000 per 100; env SIGNALPOST_TOTAL_REQUEST_CAP)")
     parser.add_argument("--registry-request-cap", type=int, default=GATE.registry_cap, help="Optional registry request cap (env SIGNALPOST_REGISTRY_REQUEST_CAP)")
     parser.add_argument("--host-interval-seconds", type=float, default=1.0, help="Minimum gap between requests to one non-registry host")
     parser.add_argument("--workers", type=int, default=8)
@@ -97,6 +99,7 @@ def main() -> None:
     GATE.configure(
         web_cap=args.web_request_cap,
         registry_cap=args.registry_request_cap,
+        total_cap=args.total_request_cap if args.total_request_cap is not None else 19 * len(orgs),
         deadline_s=args.deadline_seconds,
         host_interval=args.host_interval_seconds,
         started_at=PROCESS_STARTED,
@@ -151,6 +154,8 @@ def main() -> None:
                 if site_record["status"] == "available":
                     discovery["value"]["replaced_website_record"] = {key: (profile["evidence"].get("website") or {}).get(key) for key in ("status", "source_url", "note")}
                     profile["evidence"]["website"] = publish_discovered_site(profile, site_record, discovery)
+        if identity_index is not None and "website" in requested_modules:
+            apply_site_scope_guard(profile["evidence"]["website"], identity_index, profile)
         if "official_timeline" in requested_modules:
             profile["evidence"]["official_timeline"] = build_official_timeline(profile)
         metric = {

@@ -24,7 +24,8 @@ make run INPUT=<batch file> OUT=<output dir> BULK=<frozen Brreg bulk CSV (.csv.g
 | Variable | Default | Purpose |
 |---|---|---|
 | `NAV_FEED_TOKEN` | unset | Private NAV job-feed token. Unset: NAV's public token is fetched at run start. |
-| `SIGNALPOST_WEB_REQUEST_CAP` | 1900 | Cap on non-registry outbound requests per run. |
+| `SIGNALPOST_TOTAL_REQUEST_CAP` | 19 x companies | Cap on all outbound requests (registry and web, retries, redirects). Builderr counts 2,000 per 100 companies. |
+| `SIGNALPOST_WEB_REQUEST_CAP` | unset | Optional extra cap on non-registry requests. |
 | `SIGNALPOST_REGISTRY_REQUEST_CAP` | unset | Optional cap on Brønnøysund API requests. |
 | `SIGNALPOST_DEADLINE_SECONDS` | 2280 | Stop fetching this long after start (38 min); envelopes are always written. |
 | `SIGNALPOST_HISTORY_INTERVAL_SECONDS` | 0.25 | Minimum spacing between filed-accounts-history calls (HTTP 429 backs off 5 s). |
@@ -57,7 +58,7 @@ No LLM and no paid API are used. Expected third-party cost per official run: $0.
 
 ## Safety rails
 
-Every outbound request goes through one gate (`src/norway_company_agent/gate.py`): web cap,
+Every outbound request goes through one gate (`src/norway_company_agent/gate.py`): total cap (19 per company),
 optional registry cap, 1 s spacing per host, 10 s timeout, one retry. Fetching stops at the
 deadline and every input still gets an envelope (`budget_exhausted` where work was cut short).
 Website identity rules are in `IDENTITY_RESOLUTION.md`. `make clean-install-check` clones HEAD

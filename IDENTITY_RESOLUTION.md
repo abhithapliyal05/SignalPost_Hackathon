@@ -48,3 +48,23 @@ Contact proof is further restricted: it is not accepted for members of a corpora
 likely, and the domain label must contain the first distinctive token of the legal name.
 Without both, only orgnr proof can publish a site. (Added after a 1,000-company audit found a
 group site and a kindergarten-chain site passing on contact proof alone.)
+
+## Shared and group sites, social links, job ads (added after Builderr's audit, 2026-10-23)
+
+- **Shared or group site** (`site_scope.py`, `shared_or_group_site_guard_v1`). After any rule has
+  published a website, it is withheld, with its social links, when two or more registry entities
+  declare the same registrable domain, or when the page is a country section (`/no-no/`, `/nb/`) of
+  a non-`.no` domain. The record keeps `withheld_by` and `site_scope_check` for audit.
+- **Social links.** On top of the kit's handle test, a link is published only when its handle
+  carries the whole legal name (five or more characters, or an exact match), a distinctive token of
+  five or more characters, or two name tokens one of which has four or more. Dropped links are kept
+  in `social_links_dropped_weak_handle`.
+- **News.** None is published. The only dated activity is the official register timeline, whose
+  dates are the register's own event dates, never a feed's "updated" time.
+- **Job ads.** One record per NAV ad, matched by the employer organisation number of the company or
+  one of its registered subunits. Each carries `ad_url`, the ad's own NAV page; an
+  employer link is kept only when it is that same ad page, so careers pages and search links are
+  never published.
+- **Request budget.** Builderr counts every outbound request (registry included, retries and
+  redirects included) against 2,000 per 100 companies. The gate enforces a total cap of 19 per
+  company by default (`SIGNALPOST_TOTAL_REQUEST_CAP`).
