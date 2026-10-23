@@ -3,7 +3,8 @@
 Candidates (never evidence by themselves):
   registry homepage the starter kit could not confirm, registry e-mail domain (not free-mail and
   not shared by many entities), homepages of the company's registered subunits, and the employer
-  homepage on the company's own NAV job ads.
+  homepage on the company's own NAV job ads; then ``<name>.no`` and ``<na-me>.no`` guessed from
+  the legal name when the domain exists in DNS and no other entity declares it.
 
 A candidate is published only on proof found on a page fetched from that domain:
   orgnr proof    the exact 9-digit organisation number appears on the page and no other valid
@@ -18,6 +19,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+import socket
 import time
 import urllib.error
 import urllib.parse
@@ -121,7 +123,46 @@ def candidate_urls(profile: dict[str, Any], index: IdentityIndex, jobs_record: d
         add(location.get("website"), "subunit_homepage")
     for ad in ((jobs_record or {}).get("value") or {}).get("active_ads") or []:
         add(ad.get("employer_homepage"), "nav_ad_employer_homepage")
-    return candidates[:MAX_CANDIDATES]
+    del candidates[MAX_CANDIDATES:]
+    for domain in guessed_domains(profile.get("name"), index):
+        add("https://" + domain + "/", "name_domain_guess")
+    return candidates
+
+
+def guessed_domains(legal_name: Any, index: IdentityIndex) -> list[str]:
+    """``<name>.no`` and ``<na-me>.no`` built from the legal name, kept only when the label has at
+    least five characters, no registry entity declares the domain as its homepage, and it resolves
+    in DNS (a lookup, not an HTTP request). A guess is a candidate only; it publishes nothing
+    without the same strict page proof as every other candidate."""
+    from .identity import _tokens
+
+    tokens = _tokens(legal_name)
+    labels = ["".join(tokens)] + (["-".join(tokens)] if len(tokens) > 1 else [])
+    out = []
+    for label in labels:
+        domain = f"{label}.no"
+        if len(label.replace("-", "")) < 5 or len(label) > 63 or index.homepage_domains.get(domain, 0) > 0:
+            continue
+        if _resolves(domain) or _resolves("www." + domain):
+            out.append(domain)
+    return out
+
+
+_DNS_CACHE: dict[str, bool] = {}
+
+
+def _resolves(host: str) -> bool:
+    if host not in _DNS_CACHE:
+        try:
+            socket.getaddrinfo(host, 443)
+            _DNS_CACHE[host] = True
+        except socket.gaierror as exc:
+            # EAI_NONAME / EAI_NODATA: the name does not exist. Any other resolver failure
+            # (no DNS in the sandbox) is treated as "maybe": the gated fetch decides.
+            _DNS_CACHE[host] = exc.errno not in {socket.EAI_NONAME, getattr(socket, "EAI_NODATA", -5)}
+        except OSError:
+            _DNS_CACHE[host] = True
+    return _DNS_CACHE[host]
 
 
 def _fetch_page(url: str) -> dict[str, Any]:
@@ -229,7 +270,10 @@ def verify_candidate(candidate: dict[str, str], profile: dict[str, Any], index: 
         current = pages[-1]
         if current.get("error"):
             result["pages"].append({"url": current["url"], "error": current["error"]})
-            result.update(verdict="unreachable", reason=current["error"])
+            if attempt == 0:
+                result.update(verdict="unreachable", reason=current["error"])
+            else:
+                result.update(verdict="no_proof", reason=f"no proof on homepage; contact page {current['error']}")
             return result
         final_domain = _registered_domain(current["final_url"])
         if final_domain != candidate["domain"] and (final_domain in AGGREGATOR_DOMAINS or any(final_domain.endswith("." + item) for item in AGGREGATOR_DOMAINS)):

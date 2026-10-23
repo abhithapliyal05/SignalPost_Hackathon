@@ -48,3 +48,57 @@ Contact proof is further restricted: it is not accepted for members of a corpora
 likely, and the domain label must contain the first distinctive token of the legal name.
 Without both, only orgnr proof can publish a site. (Added after a 1,000-company audit found a
 group site and a kindergarten-chain site passing on contact proof alone.)
+
+## Shared and group sites, social links, job ads (added after Builderr's audit, 2026-10-23)
+
+- **Shared or group site** (`site_scope.py`, `shared_or_group_site_guard_v1`). After any rule has
+  published a website, it is withheld, with its social links, when two or more registry entities
+  declare the same registrable domain, or when the page is a country section (`/no-no/`, `/nb/`) of
+  a non-`.no` domain. The record keeps `withheld_by` and `site_scope_check` for audit.
+- **Social links.** On top of the kit's handle test, a link is published only when its handle
+  carries the whole legal name (five or more characters, or an exact match), a distinctive token of
+  five or more characters, or two name tokens one of which has four or more. Dropped links are kept
+  in `social_links_dropped_weak_handle`.
+- **News.** None is published. The only dated activity is the official register timeline, whose
+  dates are the register's own event dates, never a feed's "updated" time.
+- **Job ads.** One record per NAV ad, matched by the employer organisation number of the company or
+  one of its registered subunits. Each carries `ad_url`, the ad's own NAV page; an
+  employer link is kept only when it is that same ad page, so careers pages and search links are
+  never published.
+- **Request budget.** Builderr counts every outbound request (registry included, retries and
+  redirects included) against 2,000 per 100 companies. The gate enforces a total cap of 19 per
+  company by default (`SIGNALPOST_TOTAL_REQUEST_CAP`).
+
+## Additions in version 3 (2026-10-23)
+
+- **Name-based domain candidates.** After the free candidates, discovery tries `<name>.no` and
+  `<na-me>.no` built from the legal name (label of five or more characters), only when the domain
+  resolves in DNS and no registry entity declares it as its homepage. A guessed domain is a
+  candidate like any other: it publishes nothing without orgnr proof or legal-name-plus-unique-
+  contact proof on the fetched page. On the 1,000-company sample 26 sites were added this way, all
+  hand-checked (24 orgnr proof, 2 name plus unique phone or address).
+- **Foreign parent sites.** The registry-declared rule also rejects a company whose name carries a
+  national suffix (Norway, Norge, Nordic, Scandinavia) declaring a non-`.no` domain: that is the
+  foreign parent's international site.
+- **Social links.** JSON-LD `sameAs` profiles on the verified site are collected too. A handle that
+  spells the verified domain (facebook.com/nordanger.no for nordanger.no) is kept for sites proven
+  on the page, never for registry-declared sites or group members.
+- **Company posts.** Dated items from the verified site's own RSS/Atom feed (declared on the
+  homepage, same registered domain). Each date is the item's own `pubDate`/`published`, never an
+  "updated" or `lastBuildDate` time; undated, off-domain, future-dated and placeholder items
+  ("Hello world!", "Protected: …", template headlines) are dropped. Withheld or unverified sites
+  get no posts.
+
+## Public registers and register changes (2026-10-23)
+
+- **Matching is by organisation number only.** The public-register cache is keyed by the number
+  each register published. A company matches on its own number, or on a registered workplace's
+  number taken from its official subunit list; a workplace match is labelled with that
+  workplace's number. No name matching is used, so there is no false-friend risk.
+- **LEI parents** are GLEIF's accounting-consolidation relationships (`IS_DIRECTLY_CONSOLIDATED_BY`,
+  `IS_ULTIMATELY_CONSOLIDATED_BY`), active only. A lapsed LEI is reported as lapsed, not hidden.
+- **Licences** are the company's own: Finanstilsynet agent links (which name another firm's
+  licence) are dropped. Arbeidstilsynet's "Ikke godkjent" is reported as not approved.
+- **Food inspections** show the latest inspection per premises with Mattilsynet's own grade.
+- **Register changes** come from the update feed's JSON-patch changes, dated by the register.
+  Employee-count refreshes are folded into one series; routine bookkeeping fields are skipped.

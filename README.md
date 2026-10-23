@@ -3,7 +3,8 @@
 This repository is an entry for Builderr's Signalpost challenge. It starts from the official
 starter kit (imported unchanged in the first commit) and adds safety rails, NAV job ads,
 strictly verified website discovery, registry-declared websites under extra checks, filed-accounts
-history and a dated timeline of official register events. The kit's own README follows below this section.
+history, a dated timeline of official register events and changes, LEI/licence/inspection records
+from open public registers, sourced summaries and a profile viewer. The kit's own README follows below this section.
 
 ## Install and run
 
@@ -24,7 +25,8 @@ make run INPUT=<batch file> OUT=<output dir> BULK=<frozen Brreg bulk CSV (.csv.g
 | Variable | Default | Purpose |
 |---|---|---|
 | `NAV_FEED_TOKEN` | unset | Private NAV job-feed token. Unset: NAV's public token is fetched at run start. |
-| `SIGNALPOST_WEB_REQUEST_CAP` | 1900 | Cap on non-registry outbound requests per run. |
+| `SIGNALPOST_TOTAL_REQUEST_CAP` | 19 x companies | Cap on all outbound requests (registry and web, retries, redirects). Builderr counts 2,000 per 100 companies. |
+| `SIGNALPOST_WEB_REQUEST_CAP` | unset | Optional extra cap on non-registry requests. |
 | `SIGNALPOST_REGISTRY_REQUEST_CAP` | unset | Optional cap on Brønnøysund API requests. |
 | `SIGNALPOST_DEADLINE_SECONDS` | 2280 | Stop fetching this long after start (38 min); envelopes are always written. |
 | `SIGNALPOST_HISTORY_INTERVAL_SECONDS` | 0.25 | Minimum spacing between filed-accounts-history calls (HTTP 429 backs off 5 s). |
@@ -37,12 +39,26 @@ own detail URL, real retrieval time and content hash. Contact details and ad des
 stored. At run start the feed is read forward from the cache's last page, so ads that have since
 closed are dropped and new ads can still be matched.
 
+`data/cache/registers.jsonl.gz` (`make registers`, build details in `data/cache/registers_state.json`)
+holds whole-country files from open registers, keyed by the organisation number each register
+published: GLEIF LEI golden copy and relationships (CC0), Finanstilsynet's licensed entities,
+Statens vegvesen's approved workshops, Arbeidstilsynet's cleaning-company register, Udir's
+kindergarten and school registers, Fiskeridirektoratet's aquaculture register and Mattilsynet's
+food-safety inspections (all NLOD 2.0). Each entry keeps a per-record URL (or the dataset URL
+plus the record key), the file's download time and the SHA-256 of the record. Street addresses,
+phone numbers and contact names are not stored; sole-proprietor aquaculture rows are dropped.
+A run reads the cache only, so these registers cost no requests.
+
 ## Sources, licences and cost
 
 | Source | Use | Terms |
 |---|---|---|
 | Brønnøysundregistrene (Enhetsregisteret, Regnskapsregisteret) | identity, accounts, roles, subunits, contact index | NLOD 2.0 |
+| Brønnøysund update feed (oppdateringer/enheter) | dated register changes, employee-count series | NLOD 2.0 |
 | NAV job vacancy feed (pam-stilling-feed) | active job ads matched by employer orgnr | NAV API terms of use |
+| GLEIF golden copy (declared cache) | LEI, registration status, direct and ultimate parents | CC0 1.0 |
+| Finanstilsynet, Statens vegvesen, Arbeidstilsynet, Udir NBR/NSR, Fiskeridirektoratet (declared cache) | licences and approvals, own or of a registered workplace | NLOD 2.0 |
+| Mattilsynet smilefjes (declared cache) | latest food-safety inspection per premises | NLOD 2.0 |
 | Company websites | only after strict identity proof, robots.txt respected | per-site robots/terms |
 
 No LLM and no paid API are used. Expected third-party cost per official run: $0.
@@ -51,13 +67,23 @@ No LLM and no paid API are used. Expected third-party cost per official run: $0.
 
 - `financial_history`: every year the company filed annual accounts, with the official PDF link
   (the kit had it off; measured on 2026-10-14 the endpoint took 100 calls without refusal).
+- `company_posts`: dated posts from the verified website's own RSS/Atom feed (one request).
+- `summary`: a short company summary built only from this profile's evidence, each sentence with
+  its sources, plus what remains unknown. Deterministic, no model.
+- `make run` also writes `viewer.html`: one self-contained page to search, filter, compare two
+  companies side by side and open every fact's source, on desktop and mobile.
+- `registry_changes`: the Brønnøysund update feed for the last ~18 months (one request): address,
+  name, industry, purpose, share capital, VAT, liquidation, group and filing changes as dated
+  events, and monthly employee counts as one series. Phone, e-mail and street values are not copied.
 - `official_timeline`: dated events taken verbatim from the fetched register responses
-  (founded, register entries, articles dated, role-group changes, accounts periods and filing
-  years), each with its source URL, retrieval time and content hash. No extra requests.
+  (founded, register entries, articles dated, role-group changes, accounts periods, filing
+  years and the update feed's changes), each with its source URL, retrieval time and content hash.
+- `lei`, `licences`, `food_inspections`: matched by organisation number (the company's own or
+  a registered workplace's) in the declared public-register cache. No requests.
 
 ## Safety rails
 
-Every outbound request goes through one gate (`src/norway_company_agent/gate.py`): web cap,
+Every outbound request goes through one gate (`src/norway_company_agent/gate.py`): total cap (19 per company),
 optional registry cap, 1 s spacing per host, 10 s timeout, one retry. Fetching stops at the
 deadline and every input still gets an envelope (`budget_exhausted` where work was cut short).
 Website identity rules are in `IDENTITY_RESOLUTION.md`. `make clean-install-check` clones HEAD

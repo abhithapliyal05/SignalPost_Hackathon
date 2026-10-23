@@ -289,9 +289,37 @@ def _extraction_state(text: str, soup: BeautifulSoup) -> str:
     return "js_fallback_candidate" if len(text.strip()) < 100 and len(soup.select("script[src]")) >= 2 else "static_complete"
 
 
+def feed_links(base_url: str, soup: BeautifulSoup) -> list[str]:
+    """RSS/Atom feeds the page declares on its own registered domain (comment feeds excluded)."""
+    domain = _registered_domain(base_url)
+    found: list[str] = []
+    for tag in soup.select('link[rel~="alternate"][href]'):
+        kind = str(tag.get("type") or "").casefold()
+        if "rss" not in kind and "atom" not in kind:
+            continue
+        url = urllib.parse.urljoin(base_url, str(tag.get("href") or "").strip())
+        label = (str(tag.get("title") or "") + " " + url).casefold()
+        if urllib.parse.urlparse(url).scheme not in {"http", "https"} or _registered_domain(url) != domain:
+            continue
+        if "comment" in label or "kommentar" in label or url in found:
+            continue
+        found.append(url)
+    return found[:3]
+
+
+RETRYABLE_NOTE = re.compile(r"HTTP (?:403|5\d\d)|timed out|TimeoutError|Connection reset", re.I)
+
+
 def fetch_website(url: str | None, *, timeout: float = REQUEST_TIMEOUT_S, max_bytes: int = 2_000_000, max_secondary_pages: int = 4) -> tuple[dict[str, Any], dict[str, Any]]:
     try:
-        return _fetch_website(url, timeout=timeout, max_bytes=max_bytes, max_secondary_pages=max_secondary_pages)
+        record, metrics = _fetch_website(url, timeout=timeout, max_bytes=max_bytes, max_secondary_pages=max_secondary_pages)
+        if record.get("status") == "source_error" and RETRYABLE_NOTE.search(str(record.get("note") or "")):
+            time.sleep(2.0)  # one polite retry for a transient failure; the gate counts it
+            retry, retry_metrics = _fetch_website(url, timeout=timeout, max_bytes=max_bytes, max_secondary_pages=max_secondary_pages)
+            retry_metrics = {key: metrics[key] + retry_metrics[key] for key in ("requests", "bytes", "latencies_ms")}
+            retry["retry_count"] = 1
+            return retry, retry_metrics
+        return record, metrics
     except BudgetExhausted as exc:
         normalized = normalize_homepage(url) or "https://data.brreg.no/enhetsregisteret/api/enheter"
         return evidence("website", "blocked", "registry_linked_company_website", normalized, note=str(exc)), {"requests": 0, "bytes": 0, "latencies_ms": []}
@@ -336,7 +364,8 @@ def _fetch_website(url: str | None, *, timeout: float, max_bytes: int, max_secon
             "title": title[:500],
             "description": description[:2000],
             "main_text_excerpt": text[:5000],
-            "social_links": _social_links(final_url, soup),
+            "social_links": _social_links(final_url, soup) + structured_social_links(structured.get("json-ld", [])),
+            "feed_links": feed_links(final_url, soup),
             "structured_organisations": _jsonld_organisations(structured),
             "content_sha256": __import__("hashlib").sha256(raw).hexdigest(),
             "extraction_state": _extraction_state(text, soup),

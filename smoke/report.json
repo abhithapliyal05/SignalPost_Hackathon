@@ -1,7 +1,7 @@
 {
-  "run_id": "dev100v3",
-  "started_at": "2026-10-14T11:10:28.351290Z",
-  "completed_at": "2026-10-14T11:13:18.611684Z",
+  "run_id": "dev100v7",
+  "started_at": "2026-10-23T09:37:05.859848Z",
+  "completed_at": "2026-10-23T09:41:08.486705Z",
   "expected_count": 100,
   "emitted_envelopes": 100,
   "resumed_profiles": 0,
@@ -15,10 +15,16 @@
     "roles",
     "group",
     "locations",
+    "registry_changes",
     "website",
     "jobs",
     "website_discovery",
-    "official_timeline"
+    "company_posts",
+    "lei",
+    "licences",
+    "food_inspections",
+    "official_timeline",
+    "summary"
   ],
   "registry": {
     "registry_snapshot_sha256": "18834432981433b6cf01836b076154978ff9520b27bac0d8c04efeb53e2f3d72",
@@ -28,10 +34,10 @@
     "absent_from_snapshot": []
   },
   "operations": {
-    "requests": 648,
-    "bytes": 5238053,
-    "p50_ms": 733,
-    "p95_ms": 945
+    "requests": 762,
+    "bytes": 6058445,
+    "p50_ms": 750,
+    "p95_ms": 1008
   },
   "run_setup": {
     "identity_index": {
@@ -40,26 +46,43 @@
       "distinct_addresses": 742503,
       "distinct_email_domains": 92014,
       "distinct_homepage_domains": 84728,
-      "seconds": 44.0
+      "seconds": 58.5
     },
     "nav_feed": {
       "status": "caught_up",
-      "pages": 3,
+      "pages": 19,
       "token_kind": "public",
       "cache_built_at": "2026-10-14T10:29:42.754608Z",
       "cached_active_ads": 9715,
-      "now_inactive": 3,
-      "new_active_headers": 83,
-      "last_page_retrieved_at": "2026-10-14T11:11:35.245407Z",
-      "seconds": 4.1
+      "now_inactive": 3346,
+      "new_active_headers": 11514,
+      "last_page_retrieved_at": "2026-10-23T09:38:49.791237Z",
+      "seconds": 20.8
+    },
+    "register_cache": {
+      "available": true,
+      "organisations": 111492,
+      "built_at": "2026-10-23T09:08:35Z",
+      "entries_by_source": {
+        "arbeidstilsynet_cleaning": 7978,
+        "finanstilsynet": 10147,
+        "fiskeridir_aquaculture": 499,
+        "gleif_lei": 63529,
+        "mattilsynet_inspections": 8663,
+        "udir_kindergartens": 10569,
+        "udir_schools": 10518,
+        "vegvesen_workshops": 5226
+      },
+      "seconds": 0.5
     }
   },
   "gate": {
-    "registry_requests": 600,
-    "web_requests": 72,
-    "total_requests": 672,
-    "web_cap": 1900,
+    "registry_requests": 700,
+    "web_requests": 233,
+    "total_requests": 933,
+    "web_cap": null,
     "registry_cap": null,
+    "total_cap": 1900,
     "refused": {},
     "cap_hit": false,
     "deadline_s": 2280,
@@ -68,7 +91,7 @@
     "request_timeout_s": 10.0,
     "max_attempts": 2,
     "hard_stopped": false,
-    "elapsed_s": 171.0
+    "elapsed_s": 243.4
   },
   "module_states": {
     "registry": {
@@ -96,20 +119,43 @@
     "locations": {
       "complete": 100
     },
+    "registry_changes": {
+      "complete": 100
+    },
     "website": {
-      "complete": 7,
-      "not_found": 93
+      "complete": 9,
+      "not_found": 90,
+      "source_error": 1
     },
     "jobs": {
       "complete": 1,
       "not_found": 99
     },
     "website_discovery": {
+      "complete": 4,
+      "not_applicable": 2,
+      "not_found": 94
+    },
+    "company_posts": {
+      "not_applicable": 95,
+      "not_found": 5
+    },
+    "lei": {
+      "complete": 9,
+      "not_found": 91
+    },
+    "licences": {
+      "complete": 5,
+      "not_found": 95
+    },
+    "food_inspections": {
       "complete": 1,
-      "not_applicable": 3,
-      "not_found": 96
+      "not_found": 99
     },
     "official_timeline": {
+      "complete": 100
+    },
+    "summary": {
       "complete": 100
     }
   },

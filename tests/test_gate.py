@@ -80,3 +80,13 @@ def test_refused_registry_call_becomes_budget_exhausted_state() -> None:
     records, _ = fetch_official_modules("123456789", {"roles"}, fetcher=refused)
     assert records["roles"]["status"] == "blocked"
     assert evidence_terminal_state(records["roles"]) == "budget_exhausted"
+
+
+def test_total_cap_counts_registry_and_web_requests_together():
+    gate, _ = make_gate(web_cap=None, total_cap=3, host_interval=0)
+    assert gate.acquire("https://data.brreg.no/a") is None
+    assert gate.acquire("https://example.no/") is None
+    assert gate.acquire("https://data.brreg.no/b") is None
+    reason = gate.acquire("https://example.no/2")
+    assert reason and is_budget_note(reason) and "total request cap 3" in reason
+    assert gate.summary()["total_cap"] == 3
